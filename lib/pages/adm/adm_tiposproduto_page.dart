@@ -23,8 +23,11 @@ class AdmTiposProdutoPageState extends State<AdmTiposProdutoPage> {
         onPressed: () {
           showModalBottomSheet(
             context: context,
+            isScrollControlled: true,
             builder: (BuildContext context) {
-              return bsTiposProduto(context);
+              return FractionallySizedBox(
+                  heightFactor: 0.5,
+                  child: SingleChildScrollView(child: bsTiposProduto(context)));
             },
           );
         },

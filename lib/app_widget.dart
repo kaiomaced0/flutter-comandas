@@ -1,4 +1,5 @@
 import 'package:comanda_full/pages/adm/adm_caixa_page.dart';
+import 'package:comanda_full/pages/adm/adm_comandas_detail_page.dart';
 import 'package:comanda_full/pages/adm/adm_comandas_page.dart';
 import 'package:comanda_full/pages/adm/adm_funcionarios_page.dart';
 import 'package:comanda_full/pages/adm/adm_pagamentos_page.dart';
@@ -26,6 +27,7 @@ class AppWidget extends StatelessWidget {
         '/relatorios': (context) => const AdmRelatorioPage(),
         '/caixa': (context) => const AdmCaixaPage(),
         '/comandas': (context) => const AdmComandasPage(),
+        '/comandas/detail': (context) => const AdmComandasDetailPage(),
         '/funcionarios': (context) => const AdmFuncionariosPage(),
         '/pagamentos': (context) => const AdmPagamentosPage(),
         '/pedidos': (context) => const AdmPedidosPage(),

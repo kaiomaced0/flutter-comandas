@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 Widget bsFuncionario(BuildContext context) {
   return SizedBox(
-    height: 380,
     width: double.infinity,
     child: Center(
       child: Padding(
@@ -16,7 +15,8 @@ Widget bsFuncionario(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Nome do Funcionario: ', textAlign: TextAlign.start),
+                  Text('Nome do Funcionario: ',
+                      textAlign: TextAlign.start, maxLines: 1),
                   TextField(
                       autofocus: true,
                       decoration: InputDecoration(hintMaxLines: 1)),
@@ -27,10 +27,10 @@ Widget bsFuncionario(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(20, 5, 5, 5),
-                  child: SizedBox(
-                    width: 150,
+                Expanded(
+                  flex: 5,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(20, 5, 5, 5),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,10 +47,10 @@ Widget bsFuncionario(BuildContext context) {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                  child: SizedBox(
-                    width: 150,
+                Expanded(
+                  flex: 5,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 20, 5),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,

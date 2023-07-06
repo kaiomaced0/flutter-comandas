@@ -25,10 +25,12 @@ Widget cardHome(BuildContext context, String? title) {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              '$title',
-              style: const TextStyle(fontSize: 20),
-              maxLines: 2,
+            Flexible(
+              child: Text(
+                '$title',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+                maxLines: 2,
+              ),
             ),
           ],
         ),

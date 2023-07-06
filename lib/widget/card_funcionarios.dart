@@ -17,7 +17,7 @@ Padding cardFuncionario() {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(10, 0, 4, 8),
+                padding: EdgeInsets.fromLTRB(10, 0, 2, 8),
                 child: Text(
                   'Nome Funcionario',
                   textAlign: TextAlign.start,
@@ -38,7 +38,7 @@ Padding cardFuncionario() {
           Column(
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(5, 2, 0, 0),
+                padding: EdgeInsets.fromLTRB(2, 2, 0, 0),
                 child: Chip(
                     autofocus: true,
                     label: Text(

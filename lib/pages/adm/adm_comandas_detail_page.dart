@@ -1,5 +1,6 @@
 import 'package:comanda_full/widget/bs_add_comanda.dart';
-import 'package:comanda_full/widget/container_card_home.dart';
+import 'package:comanda_full/widget/bs_add_pedido.dart';
+import 'package:comanda_full/widget/card_pedidos.dart';
 import 'package:flutter/material.dart';
 import 'package:comanda_full/widget/bnb_adm.dart';
 
@@ -23,51 +24,21 @@ class AdmComandasDetailPageState extends State<AdmComandasDetailPage> {
         onPressed: () {
           showModalBottomSheet(
               context: context,
+              showDragHandle: true,
+              isScrollControlled: true,
               builder: (BuildContext context) {
-                return bsComanda(context);
+                return SingleChildScrollView(
+                    child: bsPedido(context, 'Comanda Atual'));
               });
         },
         child: const Icon(Icons.add),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  child: cardHome(context, 'Mesa 1'),
-                  onTap: () {
-                    mudarTelaAdm(6, context);
-                  },
-                ),
-                GestureDetector(
-                  child: cardHome(context, 'Mesa 2'),
-                  onTap: () {
-                    mudarTelaAdm(6, context);
-                  },
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  child: cardHome(context, 'Mesa 3'),
-                  onTap: () {
-                    mudarTelaAdm(6, context);
-                  },
-                ),
-                GestureDetector(
-                  child: cardHome(context, 'Mesa 4'),
-                  onTap: () {
-                    mudarTelaAdm(6, context);
-                  },
-                ),
-              ],
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [cardPedidos(), cardPedidos()],
+          ),
         ),
       ),
     );

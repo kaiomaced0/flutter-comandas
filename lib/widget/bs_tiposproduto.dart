@@ -17,7 +17,8 @@ Widget bsTiposProduto(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Nome do Tipo de Produto: ', textAlign: TextAlign.start),
+                  Text('Nome do Tipo de Produto: ',
+                      textAlign: TextAlign.start, maxLines: 1),
                   TextField(
                     autofocus: true,
                     decoration: InputDecoration(hintMaxLines: 1),

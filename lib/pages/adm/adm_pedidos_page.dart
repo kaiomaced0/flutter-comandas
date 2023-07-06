@@ -27,29 +27,31 @@ class AdmPedidosPageState extends State<AdmPedidosPage> {
             showDragHandle: true,
             isScrollControlled: true,
             builder: (BuildContext context) {
-              return FractionallySizedBox(
-                  heightFactor: 0.7,
-                  child: SingleChildScrollView(child: bsPedido(context)));
+              return SingleChildScrollView(child: bsPedido(context, null));
             },
           );
         },
         child: const Icon(Icons.add),
       ),
-      body: Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(8.0),
+            child: Column(
               children: [
-                filtroPedido(context),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    filtroPedido(context),
+                  ],
+                ),
+                cardPedidos(),
+                cardPedidos(),
+                cardPedidos()
               ],
             ),
-            cardPedidos(),
-            cardPedidos(),
-            cardPedidos()
-          ],
+          ),
         ),
       ),
     );

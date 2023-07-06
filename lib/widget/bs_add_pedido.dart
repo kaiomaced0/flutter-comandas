@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:comanda_full/widget/itemcompra_pedido.dart';
 
-Widget bsPedido(BuildContext context) {
+Widget bsPedido(BuildContext context, String? mesa) {
   return SizedBox(
-    height: 370,
     width: double.infinity,
     child: Center(
       child: Padding(
@@ -76,63 +76,75 @@ Widget bsPedido(BuildContext context) {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        alignment: Alignment.center,
-                        height: 40,
-                        width: 40,
-                        decoration: ShapeDecoration(
-                          color: const Color.fromARGB(255, 194, 172, 239),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            alignment: Alignment.center,
+                            height: 40,
+                            width: 40,
+                            decoration: ShapeDecoration(
+                              color: const Color.fromARGB(255, 194, 172, 239),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              shadows: const [
+                                BoxShadow(
+                                  color: Color(0x3F000000),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 4),
+                                  spreadRadius: 0,
+                                )
+                              ],
+                            ),
+                            child: Icon(Icons.add),
                           ),
-                          shadows: const [
-                            BoxShadow(
-                              color: Color(0x3F000000),
-                              blurRadius: 4,
-                              offset: Offset(0, 4),
-                              spreadRadius: 0,
-                            )
-                          ],
                         ),
-                        child: Icon(Icons.add),
                       )
                     ],
                   ),
                 )
               ],
             ),
+            Column(
+              children: [
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido()
+              ],
+            ),
+            const Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                child: Text(
+                  'R\$ 40,00',
+                  maxLines: 1,
+                  style: TextStyle(
+                      fontFamily: 'Roboto', fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.end,
+                ),
+              )
+            ]),
             const Padding(
               padding: EdgeInsets.fromLTRB(20, 1, 20, 1),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('CPF: ', textAlign: TextAlign.start),
+                  Text('Observacao: ', textAlign: TextAlign.start),
                   TextField(
                     autofocus: true,
                     decoration: InputDecoration(hintMaxLines: 1),
                   ),
                 ],
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(20, 1, 20, 5),
-              child: SizedBox(
-                width: 150,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Tipo de Acesso: ',
-                      maxLines: 1,
-                    ),
-                    TextField(
-                      autofocus: false,
-                      decoration: InputDecoration(hintMaxLines: 1),
-                    ),
-                  ],
-                ),
               ),
             ),
             MouseRegion(

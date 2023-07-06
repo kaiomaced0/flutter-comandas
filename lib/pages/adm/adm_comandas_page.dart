@@ -39,26 +39,40 @@ class AdmComandasPageState extends State<AdmComandasPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GestureDetector(
-                    child: cardComanda(context, 'Mesa 1'),
-                    onTap: () {},
+                  Expanded(
+                    flex: 5,
+                    child: GestureDetector(
+                      child: cardComanda(context, 'Mesa 1'),
+                      onTap: () {
+                        mudarTelaAdm(9, context);
+                      },
+                    ),
                   ),
-                  GestureDetector(
-                    child: cardComanda(context, 'Mesa 2'),
-                    onTap: () {},
+                  Expanded(
+                    flex: 5,
+                    child: GestureDetector(
+                      child: cardComanda(context, 'Mesa 2'),
+                      onTap: () {},
+                    ),
                   ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GestureDetector(
-                    child: cardComanda(context, 'Mesa 3'),
-                    onTap: () {},
+                  Expanded(
+                    flex: 5,
+                    child: GestureDetector(
+                      child: cardComanda(context, 'Mesa 3'),
+                      onTap: () {},
+                    ),
                   ),
-                  GestureDetector(
-                    child: cardComanda(context, 'Mesa 4'),
-                    onTap: () {},
+                  Expanded(
+                    flex: 5,
+                    child: GestureDetector(
+                      child: cardComanda(context, 'Mesa 4'),
+                      onTap: () {},
+                    ),
                   ),
                 ],
               ),

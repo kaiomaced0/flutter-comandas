@@ -1,5 +1,5 @@
 import 'package:comanda_full/widget/bs_add_produto.dart';
-import 'package:comanda_full/widget/card_lista_produto.dart';
+import 'package:comanda_full/widget/card_produto.dart';
 import 'package:flutter/material.dart';
 import 'package:comanda_full/widget/bnb_adm.dart';
 
@@ -26,9 +26,7 @@ class AdmProdutoPageState extends State<AdmProdutoPage> {
             isScrollControlled: true,
             context: context,
             builder: (BuildContext context) {
-              return FractionallySizedBox(
-                  heightFactor: 0.7,
-                  child: SingleChildScrollView(child: bsProduto(context)));
+              return SingleChildScrollView(child: bsProduto(context));
             },
           );
         },

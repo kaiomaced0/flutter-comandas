@@ -38,4 +38,8 @@ void mudarTelaAdm(int x, BuildContext context) {
     _currentBnb = 0;
     Navigator.of(context).pushNamed('/caixa');
   }
+  if (x == 9) {
+    _currentBnb = 0;
+    Navigator.of(context).pushNamed('/comandas/detail');
+  }
 }

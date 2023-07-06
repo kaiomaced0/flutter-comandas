@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
-Container bsProduto(BuildContext context) {
-  return Container(
-    height: 380,
+Widget bsProduto(BuildContext context) {
+  return SizedBox(
     child: Center(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 1.2, 0, 5),
+        padding: const EdgeInsets.fromLTRB(10, 1.2, 10, 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Padding(
-              padding: EdgeInsets.fromLTRB(20, 5, 20, 0),
+              padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,10 +25,10 @@ Container bsProduto(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(20, 5, 5, 5),
-                  child: SizedBox(
-                    width: 150,
+                Expanded(
+                  flex: 5,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 5, 5, 5),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,20 +45,23 @@ Container bsProduto(BuildContext context) {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                  child: SizedBox(
-                    width: 150,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Preço Custo: '),
-                        TextField(
-                          autofocus: true,
-                          decoration: InputDecoration(hintMaxLines: 1),
-                        ),
-                      ],
+                Expanded(
+                  flex: 5,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(5, 5, 0, 5),
+                    child: SizedBox(
+                      width: 150,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Preço Custo: '),
+                          TextField(
+                            autofocus: true,
+                            decoration: InputDecoration(hintMaxLines: 1),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

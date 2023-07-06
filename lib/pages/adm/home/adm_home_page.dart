@@ -16,85 +16,101 @@ class _AdmHomePageState extends State<AdmHomePage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Comandas Full'),
-          actions: [],
+          actions: const [],
         ),
         bottomNavigationBar: bnbAdm(context),
         body: SingleChildScrollView(
           child: Center(
             child: Column(
               children: [
-                Row(
-                  children: [Center(child: Text('   Caixa Atual:'))],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [cardInicioHomeAdm()],
-                ),
-                Row(
-                  children: [],
-                ),
+                const Text('   Caixa Atual:'),
+                cardInicioHomeAdm(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    GestureDetector(
-                      child: cardHome(context, 'Comandas'),
-                      onTap: () {
-                        mudarTelaAdm(3, context);
-                      },
+                    Expanded(
+                      flex: 5,
+                      child: GestureDetector(
+                        child: cardHome(context, 'Comandas'),
+                        onTap: () {
+                          mudarTelaAdm(3, context);
+                        },
+                      ),
                     ),
-                    GestureDetector(
-                      child: cardHome(context, 'Produtos'),
-                      onTap: () {
-                        mudarTelaAdm(1, context);
-                      },
+                    Expanded(
+                      flex: 5,
+                      child: GestureDetector(
+                        child: cardHome(context, 'Produtos'),
+                        onTap: () {
+                          mudarTelaAdm(1, context);
+                        },
+                      ),
                     ),
                   ],
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  GestureDetector(
-                    child: cardHome(context, 'Pedidos'),
-                    onTap: () {
-                      mudarTelaAdm(4, context);
-                    },
+                  Expanded(
+                    flex: 5,
+                    child: GestureDetector(
+                      child: cardHome(context, 'Pedidos'),
+                      onTap: () {
+                        mudarTelaAdm(4, context);
+                      },
+                    ),
                   ),
-                  GestureDetector(
-                    child: cardHome(context, 'Funcionarios'),
-                    onTap: () {
-                      mudarTelaAdm(5, context);
-                    },
+                  Expanded(
+                    flex: 5,
+                    child: GestureDetector(
+                      child: cardHome(context, 'Funcionarios'),
+                      onTap: () {
+                        mudarTelaAdm(5, context);
+                      },
+                    ),
                   ),
                 ]),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    GestureDetector(
-                      child: cardHome(context, 'Pagamentos'),
-                      onTap: () {
-                        mudarTelaAdm(6, context);
-                      },
+                    Expanded(
+                      flex: 5,
+                      child: GestureDetector(
+                        child: cardHome(context, 'Pagamentos'),
+                        onTap: () {
+                          mudarTelaAdm(6, context);
+                        },
+                      ),
                     ),
-                    GestureDetector(
-                      child: cardHome(context, 'Relatórios'),
-                      onTap: () {
-                        mudarTelaAdm(2, context);
-                      },
+                    Expanded(
+                      flex: 5,
+                      child: GestureDetector(
+                        child: cardHome(context, 'Relatórios'),
+                        onTap: () {
+                          mudarTelaAdm(2, context);
+                        },
+                      ),
                     ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    GestureDetector(
-                      child: cardHome(context, 'Tipos de \n Produto'),
-                      onTap: () {
-                        mudarTelaAdm(7, context);
-                      },
+                    Expanded(
+                      flex: 5,
+                      child: GestureDetector(
+                        child: cardHome(context, 'Tipos de \n Produto'),
+                        onTap: () {
+                          mudarTelaAdm(7, context);
+                        },
+                      ),
                     ),
-                    GestureDetector(
-                      child: cardHome(context, 'Caixa'),
-                      onTap: () {
-                        mudarTelaAdm(8, context);
-                      },
+                    Expanded(
+                      flex: 5,
+                      child: GestureDetector(
+                        child: cardHome(context, 'Caixa'),
+                        onTap: () {
+                          mudarTelaAdm(8, context);
+                        },
+                      ),
                     ),
                   ],
                 ),
