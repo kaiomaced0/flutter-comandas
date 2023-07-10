@@ -63,7 +63,7 @@ Padding cardPagamento() {
                 child: Chip(
                     autofocus: true,
                     label: Text(
-                      'Tipo Acesso',
+                      'R\$ 40,00',
                       style: TextStyle(color: Colors.black, fontSize: 12),
                     )),
               ),
