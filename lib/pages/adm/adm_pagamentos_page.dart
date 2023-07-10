@@ -28,9 +28,9 @@ class AdmPagamentosPageState extends State<AdmPagamentosPage> {
             child: Column(
           children: [
             FiltroPagamento(context),
-            cardPagamento(),
-            cardPagamento(),
-            cardPagamento(),
+            cardPagamento(context),
+            cardPagamento(context),
+            cardPagamento(context),
           ],
         )),
       ),

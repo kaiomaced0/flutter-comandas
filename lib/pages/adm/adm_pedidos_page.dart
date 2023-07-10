@@ -46,9 +46,9 @@ class AdmPedidosPageState extends State<AdmPedidosPage> {
                     filtroPedido(context),
                   ],
                 ),
-                cardPedidos(),
-                cardPedidos(),
-                cardPedidos()
+                cardPedidos(context),
+                cardPedidos(context),
+                cardPedidos(context)
               ],
             ),
           ),

@@ -21,15 +21,7 @@ class AdmTiposProdutoPageState extends State<AdmTiposProdutoPage> {
       bottomNavigationBar: bnbAdm(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            builder: (BuildContext context) {
-              return FractionallySizedBox(
-                  heightFactor: 0.5,
-                  child: SingleChildScrollView(child: bsTiposProduto(context)));
-            },
-          );
+          bsTiposProduto(context);
         },
         child: const Icon(Icons.add),
       ),

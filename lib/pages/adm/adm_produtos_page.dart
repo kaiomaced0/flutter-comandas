@@ -21,20 +21,14 @@ class AdmProdutoPageState extends State<AdmProdutoPage> {
       bottomNavigationBar: bnbAdm(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(
-            showDragHandle: true,
-            isScrollControlled: true,
-            context: context,
-            builder: (BuildContext context) {
-              return SingleChildScrollView(child: bsProduto(context));
-            },
-          );
+          bsProduto(context);
         },
         child: const Icon(Icons.add),
       ),
       body: SingleChildScrollView(
-          child:
-              Center(child: Column(children: [cardProduto(), cardProduto()]))),
+          child: Center(
+              child: Column(
+                  children: [cardProduto(context), cardProduto(context)]))),
     );
   }
 }

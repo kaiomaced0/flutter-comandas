@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-Future bsTiposProduto(BuildContext context) {
+Future bsPagamento(BuildContext context) {
   return showModalBottomSheet(
     context: context,
+    showDragHandle: true,
     isScrollControlled: true,
     builder: (BuildContext context) {
       return FractionallySizedBox(
-          heightFactor: 0.5,
+          heightFactor: 0.7,
           child: SingleChildScrollView(
               child: SizedBox(
-            height: 220,
             width: double.infinity,
             child: Center(
               child: Padding(
@@ -24,7 +24,7 @@ Future bsTiposProduto(BuildContext context) {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Nome do Tipo de Produto: ',
+                          Text('aaaaaaaaaaa: ',
                               textAlign: TextAlign.start, maxLines: 1),
                           TextField(
                             autofocus: true,
@@ -63,12 +63,13 @@ Future bsTiposProduto(BuildContext context) {
                                   alignment: Alignment.bottomCenter,
                                   child: Padding(
                                     padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                                    child: Text('Adicionar',
+                                    child: Text('Realizar Pagamento',
+                                        maxLines: 2,
                                         style: TextStyle(
                                           fontSize: 20,
                                           color: Colors.white,
                                         ),
-                                        textAlign: TextAlign.justify),
+                                        textAlign: TextAlign.center),
                                   ),
                                 ),
                               ),

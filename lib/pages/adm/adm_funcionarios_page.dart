@@ -21,20 +21,13 @@ class AdmFuncionariosPageState extends State<AdmFuncionariosPage> {
       bottomNavigationBar: bnbAdm(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(
-            showDragHandle: true,
-            isScrollControlled: true,
-            context: context,
-            builder: (BuildContext context) {
-              return SingleChildScrollView(child: bsFuncionario(context));
-            },
-          );
+          bsFuncionario(context);
         },
         child: const Icon(Icons.add),
       ),
       body: SingleChildScrollView(
           child: Center(
-              child: Column(children: [cardFuncionario(), cardFuncionario()]))),
+              child: Column(children: [cardFuncionario(context), cardFuncionario(context)]))),
     );
   }
 }
