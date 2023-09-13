@@ -108,22 +108,19 @@ Widget bsPedido(BuildContext context, String? mesa) {
                 )
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  itemCompraPedido(),
-                  itemCompraPedido(),
-                  itemCompraPedido(),
-                  itemCompraPedido(),
-                  itemCompraPedido(),
-                  itemCompraPedido(),
-                  itemCompraPedido(),
-                  itemCompraPedido(),
-                  itemCompraPedido(),
-                  itemCompraPedido()
-                ],
-              ),
+            Column(
+              children: [
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido(),
+                itemCompraPedido()
+              ],
             ),
             const Row(mainAxisAlignment: MainAxisAlignment.end, children: [
               Padding(

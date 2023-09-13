@@ -16,7 +16,7 @@ class AdmComandasDetailPageState extends State<AdmComandasDetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pedidos da Comanda'),
-        actions: [],
+        actions: const [],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

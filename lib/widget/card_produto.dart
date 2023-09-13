@@ -79,6 +79,7 @@ Padding cardProduto(BuildContext context) {
                   Padding(
                     padding: EdgeInsets.fromLTRB(2, 2, 0, 0),
                     child: Chip(
+                        backgroundColor: Colors.white,
                         label: Text(
                       'TipoProduto',
                       style: TextStyle(fontSize: 14),

@@ -1,3 +1,4 @@
+import 'package:comanda_full/widget/bs_remove_pagamento.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -78,6 +79,7 @@ Widget cardPagamento(BuildContext context) {
                       )),
                     ));
                   });
+              bsRemoverPagamento(context, 1);
             },
             icon: Icons.block,
             backgroundColor: Colors.red.shade900,

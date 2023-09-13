@@ -5,7 +5,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 Widget cardPedidos(BuildContext context) {
   return GestureDetector(
     child: Padding(
-      padding: const EdgeInsets.fromLTRB(1, 3, 1, 5),
+      padding: const EdgeInsets.fromLTRB(2, 3, 2, 3),
       child: Slidable(
         endActionPane: ActionPane(
           motion: const StretchMotion(),
@@ -65,14 +65,15 @@ Widget cardPedidos(BuildContext context) {
                                     fontSize: 20, color: Colors.black),
                               ),
                               Chip(
+                                  backgroundColor: Colors.white,
                                   label: Text(
-                                maxLines: 1,
-                                'Aguardando',
-                                style: TextStyle(fontSize: 12),
-                              )),
+                                    maxLines: 1,
+                                    'Aguardando',
+                                    style: TextStyle(fontSize: 12),
+                                  )),
                               Text(
                                   style: TextStyle(
-                                      fontSize: 10, color: Colors.black),
+                                      fontSize: 12, color: Colors.black),
                                   maxLines: 2,
                                   'observacoes...............................\n................................................'),
                             ],

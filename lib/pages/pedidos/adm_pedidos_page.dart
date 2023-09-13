@@ -32,7 +32,7 @@ class AdmPedidosPageState extends State<AdmPedidosPage> {
                   child: SingleChildScrollView(child: bsPedido(context, null)));
             },
           );
-        },
+          },
         child: const Icon(Icons.add),
       ),
       body: Center(
