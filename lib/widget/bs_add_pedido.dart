@@ -6,6 +6,7 @@ Widget bsPedido(BuildContext context, String? mesa) {
   return SizedBox(
     width: double.infinity,
     child: Center(
+      
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 1.2, 0, 5),
         child: Column(
@@ -107,19 +108,22 @@ Widget bsPedido(BuildContext context, String? mesa) {
                 )
               ],
             ),
-            Column(
-              children: [
-                itemCompraPedido(),
-                itemCompraPedido(),
-                itemCompraPedido(),
-                itemCompraPedido(),
-                itemCompraPedido(),
-                itemCompraPedido(),
-                itemCompraPedido(),
-                itemCompraPedido(),
-                itemCompraPedido(),
-                itemCompraPedido()
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  itemCompraPedido(),
+                  itemCompraPedido(),
+                  itemCompraPedido(),
+                  itemCompraPedido(),
+                  itemCompraPedido(),
+                  itemCompraPedido(),
+                  itemCompraPedido(),
+                  itemCompraPedido(),
+                  itemCompraPedido(),
+                  itemCompraPedido()
+                ],
+              ),
             ),
             const Row(mainAxisAlignment: MainAxisAlignment.end, children: [
               Padding(

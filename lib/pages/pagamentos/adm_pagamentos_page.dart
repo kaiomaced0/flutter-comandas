@@ -18,7 +18,7 @@ class AdmPagamentosPageState extends State<AdmPagamentosPage> {
         title: const Text('Pagamentos'),
         actions: [],
       ),
-      bottomNavigationBar: bnbAdm(context),
+      bottomNavigationBar: bnbAdm(context, 0),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.add),

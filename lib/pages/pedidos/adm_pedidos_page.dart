@@ -19,7 +19,7 @@ class AdmPedidosPageState extends State<AdmPedidosPage> {
         title: const Text('Pedidos'),
         actions: [],
       ),
-      bottomNavigationBar: bnbAdm(context),
+      bottomNavigationBar: bnbAdm(context, 0),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
@@ -27,7 +27,9 @@ class AdmPedidosPageState extends State<AdmPedidosPage> {
             showDragHandle: true,
             isScrollControlled: true,
             builder: (BuildContext context) {
-              return SingleChildScrollView(child: bsPedido(context, null));
+              return FractionallySizedBox(
+                  heightFactor: 0.9,
+                  child: SingleChildScrollView(child: bsPedido(context, null)));
             },
           );
         },
@@ -37,7 +39,7 @@ class AdmPedidosPageState extends State<AdmPedidosPage> {
         child: SingleChildScrollView(
           child: Container(
             alignment: Alignment.center,
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
                 Row(

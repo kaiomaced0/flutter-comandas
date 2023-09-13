@@ -1,4 +1,4 @@
-part of 'bnb_adm.dart';
+part of 'widget/bnb_adm.dart';
 
 int _currentBnb = 0;
 void mudarTelaAdm(int x, BuildContext context) {

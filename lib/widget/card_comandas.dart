@@ -27,7 +27,10 @@ Widget cardComanda(BuildContext context, String? title) {
           children: [
             Text(
               '$title',
-              style: const TextStyle(fontSize: 20),
+              style: const TextStyle(
+                fontSize: 20,
+                color: Colors.black,
+              ),
               maxLines: 2,
             ),
           ],

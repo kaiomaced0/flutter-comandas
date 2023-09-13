@@ -28,7 +28,8 @@ Widget cardHome(BuildContext context, String? title) {
             Flexible(
               child: Text(
                 '$title',
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.black),
                 maxLines: 2,
               ),
             ),

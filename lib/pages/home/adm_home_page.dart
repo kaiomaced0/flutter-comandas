@@ -18,7 +18,7 @@ class _AdmHomePageState extends State<AdmHomePage> {
           title: const Text('Comandas Full'),
           actions: const [],
         ),
-        bottomNavigationBar: bnbAdm(context),
+        bottomNavigationBar: bnbAdm(context, null),
         body: SingleChildScrollView(
           child: Center(
             child: Column(

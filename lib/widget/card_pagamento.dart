@@ -19,17 +19,17 @@ Widget cardPagamento(BuildContext context) {
                   builder: (BuildContext context) {
                     return SingleChildScrollView(
                         child: Padding(
-                      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                       child: Center(
                           child: Column(
                         children: [
                           const Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Text(
                                 'Certeza que deseja cancelar esse Pagamento?'),
                           ),
                           const Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Text('Porque deseja Cancelar?'),
                           ),
                           const Padding(
@@ -87,7 +87,7 @@ Widget cardPagamento(BuildContext context) {
       child: Container(
         color: const Color(0xFFA2E298),
         width: double.infinity,
-        height: 63,
+        height: 80,
         child: const Padding(
           padding: EdgeInsets.fromLTRB(0, 2, 4, 1),
           child:

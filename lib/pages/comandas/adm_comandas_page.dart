@@ -18,7 +18,7 @@ class AdmComandasPageState extends State<AdmComandasPage> {
         title: const Text('Comandas'),
         actions: [],
       ),
-      bottomNavigationBar: bnbAdm(context),
+      bottomNavigationBar: bnbAdm(context, 0),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
@@ -26,7 +26,9 @@ class AdmComandasPageState extends State<AdmComandasPage> {
               context: context,
               isScrollControlled: true,
               builder: (BuildContext context) {
-                return SingleChildScrollView(child: bsComanda(context));
+                return FractionallySizedBox(
+                    heightFactor: 0.63,
+                    child: SingleChildScrollView(child: bsComanda(context)));
               });
         },
         child: const Icon(Icons.add),

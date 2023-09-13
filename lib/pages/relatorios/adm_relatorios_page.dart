@@ -16,7 +16,7 @@ class AdmRelatorioPageState extends State<AdmRelatorioPage> {
           title: const Text('Relatórios'),
           actions: [],
         ),
-      bottomNavigationBar: bnbAdm(context),
+      bottomNavigationBar: bnbAdm(context, null),
     );
   }
 }

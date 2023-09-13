@@ -18,7 +18,7 @@ class AdmTiposProdutoPageState extends State<AdmTiposProdutoPage> {
         title: const Text('Tipos de Produto'),
         actions: [],
       ),
-      bottomNavigationBar: bnbAdm(context),
+      bottomNavigationBar: bnbAdm(context, 0),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           bsTiposProduto(context);

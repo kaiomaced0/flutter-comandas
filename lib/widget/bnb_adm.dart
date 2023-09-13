@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-part 'navigator_telas.dart';
+part '../navigator_telas.dart';
 
-BottomNavigationBar bnbAdm(context) {
+BottomNavigationBar bnbAdm(context, int? current) {
   return BottomNavigationBar(
     items: const [
       BottomNavigationBarItem(
@@ -16,6 +16,9 @@ BottomNavigationBar bnbAdm(context) {
     currentIndex: _currentBnb,
     onTap: (value) {
       String? rotaAtual = ModalRoute.of(context)?.settings.name;
+      if (current != null) {
+        Navigator.pop(context);
+      }
       if (value == 0) {
         if (rotaAtual == '/') {
           Navigator.of(context).pushReplacementNamed('/');

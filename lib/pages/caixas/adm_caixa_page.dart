@@ -16,7 +16,7 @@ class AdmCaixaPageState extends State<AdmCaixaPage> {
         title: const Text('Caixa'),
         actions: [],
       ),
-      bottomNavigationBar: bnbAdm(context),
+      bottomNavigationBar: bnbAdm(context, null),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.add),

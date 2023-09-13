@@ -1,13 +1,13 @@
-import 'package:comanda_full/pages/adm/adm_caixa_page.dart';
-import 'package:comanda_full/pages/adm/adm_comandas_detail_page.dart';
-import 'package:comanda_full/pages/adm/adm_comandas_page.dart';
-import 'package:comanda_full/pages/adm/adm_funcionarios_page.dart';
-import 'package:comanda_full/pages/adm/adm_pagamentos_page.dart';
-import 'package:comanda_full/pages/adm/adm_pedidos_page.dart';
-import 'package:comanda_full/pages/adm/adm_produtos_page.dart';
-import 'package:comanda_full/pages/adm/adm_relatorios_page.dart';
-import 'package:comanda_full/pages/adm/adm_tiposproduto_page.dart';
-import 'package:comanda_full/pages/adm/home/adm_home_page.dart';
+import 'package:comanda_full/pages/caixas/adm_caixa_page.dart';
+import 'package:comanda_full/pages/comandas/adm_comandas_detail_page.dart';
+import 'package:comanda_full/pages/comandas/adm_comandas_page.dart';
+import 'package:comanda_full/pages/funcionarios/adm_funcionarios_page.dart';
+import 'package:comanda_full/pages/pagamentos/adm_pagamentos_page.dart';
+import 'package:comanda_full/pages/pedidos/adm_pedidos_page.dart';
+import 'package:comanda_full/pages/produtos/adm_produtos_page.dart';
+import 'package:comanda_full/pages/relatorios/adm_relatorios_page.dart';
+import 'package:comanda_full/pages/tiposproduto/adm_tiposproduto_page.dart';
+import 'package:comanda_full/pages/home/adm_home_page.dart';
 import 'package:flutter/material.dart';
 import 'src/shared/themes/themes.dart';
 

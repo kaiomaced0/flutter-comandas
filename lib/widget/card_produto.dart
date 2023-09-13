@@ -1,4 +1,5 @@
 import 'package:comanda_full/widget/bs_add_produto.dart';
+import 'package:comanda_full/widget/bs_add_produto_estoque.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -25,13 +26,22 @@ Padding cardProduto(BuildContext context) {
             onPressed: (context) {},
             icon: Icons.block,
             backgroundColor: Colors.red.shade900,
+          ),
+          SlidableAction(
+            onPressed: (context) {
+              bsProdutoEstoque(context);
+            },
+            label: 'Estoque',
+            padding: EdgeInsets.zero,
+            icon: Icons.edit_document,
+            backgroundColor: Theme.of(context).hintColor,
           )
         ],
       ),
       child: Container(
         color: const Color(0xFFD8E3FF),
         width: double.infinity,
-        height: 63,
+        height: 80,
         child: const Padding(
           padding: EdgeInsets.fromLTRB(0, 2, 4, 1),
           child:
@@ -47,16 +57,17 @@ Padding cardProduto(BuildContext context) {
                       'Nome do Produto',
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(2, 0, 0, 0),
                     child: Text(
-                        style: TextStyle(fontSize: 10),
+                        style: TextStyle(fontSize: 13, color: Colors.black),
                         maxLines: 2,
-                        ' Descricao do produto..............................\n...................................................'),
+                        'Descricao do produto......... ........... ............. ...............................................................'),
                   )
                 ],
               ),
@@ -66,16 +77,17 @@ Padding cardProduto(BuildContext context) {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.fromLTRB(5, 2, 0, 0),
+                    padding: EdgeInsets.fromLTRB(2, 2, 0, 0),
                     child: Chip(
                         label: Text(
                       'TipoProduto',
-                      style: TextStyle(color: Colors.black, fontSize: 12),
+                      style: TextStyle(fontSize: 14),
                     )),
                   ),
                   Text(
                     'R\$ 100,00',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                 ],
               ),

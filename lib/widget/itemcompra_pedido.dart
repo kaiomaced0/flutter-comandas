@@ -9,7 +9,7 @@ Widget itemCompraPedido() {
       Text(
         '$quantidade x  $nome ',
         maxLines: 1,
-        style: TextStyle(fontSize: 10, fontWeight: FontWeight.normal),
+        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
       ),
     ],
   );

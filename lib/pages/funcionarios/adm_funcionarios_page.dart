@@ -18,7 +18,7 @@ class AdmFuncionariosPageState extends State<AdmFuncionariosPage> {
         title: const Text('Funcionarios'),
         actions: [],
       ),
-      bottomNavigationBar: bnbAdm(context),
+      bottomNavigationBar: bnbAdm(context, 0),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           bsFuncionario(context);

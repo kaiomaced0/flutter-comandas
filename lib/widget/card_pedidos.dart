@@ -16,7 +16,7 @@ Widget cardPedidos(BuildContext context) {
               label: "Pronto",
               onPressed: (context) {},
               icon: Icons.edit,
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Colors.blueGrey,
             ),
             SlidableAction(
               borderRadius: BorderRadius.circular(10),
@@ -61,17 +61,18 @@ Widget cardPedidos(BuildContext context) {
                               Text(
                                 'Mesa 1',
                                 maxLines: 1,
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.black),
                               ),
                               Chip(
                                   label: Text(
                                 maxLines: 1,
                                 'Aguardando',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 12),
+                                style: TextStyle(fontSize: 12),
                               )),
                               Text(
-                                  style: TextStyle(fontSize: 10),
+                                  style: TextStyle(
+                                      fontSize: 10, color: Colors.black),
                                   maxLines: 2,
                                   'observacoes...............................\n................................................'),
                             ],
@@ -89,25 +90,32 @@ Widget cardPedidos(BuildContext context) {
                               Text(
                                 '1x' ' Produto1',
                                 maxLines: 1,
-                                style: TextStyle(fontSize: 10),
+                                style: TextStyle(
+                                    fontSize: 10, color: Colors.black),
                               ),
                               Text(
                                 '1x' ' Produto1',
                                 maxLines: 1,
-                                style: TextStyle(fontSize: 10),
+                                style: TextStyle(
+                                    fontSize: 10, color: Colors.black),
                               ),
                               Text(
                                 '1x' + ' Produto1',
                                 maxLines: 1,
-                                style: TextStyle(fontSize: 10),
-                              ),
-                              Text(
-                                'R\$ 40,00',
-                                maxLines: 1,
                                 style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.end,
+                                    fontSize: 10, color: Colors.black),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                                child: Text(
+                                  'R\$ 40,00',
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.end,
+                                ),
                               )
                             ],
                           ),
