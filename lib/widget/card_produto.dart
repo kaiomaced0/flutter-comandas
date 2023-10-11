@@ -1,10 +1,11 @@
+import 'package:comanda_full/data/model/produto.dart';
 import 'package:comanda_full/widget/bs_add_produto.dart';
 import 'package:comanda_full/widget/bs_add_produto_estoque.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-Padding cardProduto(BuildContext context) {
+Padding cardProduto(BuildContext context, final Produto produto) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(4, 3, 4, 1),
     child: Slidable(
@@ -54,7 +55,7 @@ Padding cardProduto(BuildContext context) {
                   Padding(
                     padding: EdgeInsets.fromLTRB(2, 0, 4, 8),
                     child: Text(
-                      'Nome do Produto',
+                      'aaaaa',
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           fontSize: 16,
@@ -81,9 +82,9 @@ Padding cardProduto(BuildContext context) {
                     child: Chip(
                         backgroundColor: Colors.white,
                         label: Text(
-                      'TipoProduto',
-                      style: TextStyle(fontSize: 14),
-                    )),
+                          'TipoProduto',
+                          style: TextStyle(fontSize: 14),
+                        )),
                   ),
                   Text(
                     'R\$ 100,00',

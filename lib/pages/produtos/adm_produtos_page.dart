@@ -1,7 +1,11 @@
+import 'dart:convert';
+
+import 'package:comanda_full/data/model/produto.dart';
 import 'package:comanda_full/widget/bs_add_produto.dart';
 import 'package:comanda_full/widget/card_produto.dart';
 import 'package:flutter/material.dart';
 import 'package:comanda_full/widget/bnb_adm.dart';
+import 'package:http/http.dart' as http;
 
 class AdmProdutoPage extends StatefulWidget {
   const AdmProdutoPage({super.key});
@@ -11,6 +15,7 @@ class AdmProdutoPage extends StatefulWidget {
 }
 
 class AdmProdutoPageState extends State<AdmProdutoPage> {
+  Produto p = new Produto(id: 1, nome: 'objeto', valorVenda: 50, estoque: 10);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +32,10 @@ class AdmProdutoPageState extends State<AdmProdutoPage> {
       ),
       body: SingleChildScrollView(
           child: Center(
-              child: Column(
-                  children: [cardProduto(context), cardProduto(context)]))),
+              child: Column(children: [
+        cardProduto(context, p),
+        cardProduto(context, p)
+      ]))),
     );
   }
 }
