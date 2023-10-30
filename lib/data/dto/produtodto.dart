@@ -40,7 +40,7 @@ Future<List<Produto>> obterProdutos() async {
   List<Produto> produtos = [];
   final headers = {
     'Authorization':
-        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJrYWlvcHJvamVjdHMtand0Iiwic3ViIjoiQW5hU2lsdmEiLCJncm91cHMiOlsiQWRtaW4iXSwiZXhwIjoxNzU1MzI0NzA2LCJpYXQiOjE2OTQ4NDQ3MDYsImp0aSI6ImVjZTAwMWY1LTQ3ZGUtNDRiMy05NWM2LTdkZGQxNWMxZWVhZCJ9.eRQt7Pu86JGT7HpSWU58HW633lym_Gfn45nAPTFw3IBcN3_p_Z_cOT7iEm3NktPkXYpP30XGqgLIrFBIk99Ll7f9DEA7CWyuW0ZJcTDO5guwq9_hiIvdZbs5ZiKQQRdtLUAnjshSvWBLj3gTAGdl4OBga7hmEc-cB4InuW598U9eKa2CwGa8GMdUzAo0fJLUfskp2ITC_7wwirsNPP9BH3hI-bCgKokqRRLFLU9-rNykY08gwMF-Xf_Pu2OZdBKJH7mfERPTI9GlH7p4EKy7qy1p2VQbShRA2VppaHmBgcqk6b4D2EOM5vt5XLxXMdg71rw-lLRHpTGmEaM_mlqpnA', // Adicione o token aqui
+        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJrYWlvcHJvamVjdHMtand0Iiwic3ViIjoiQnJ1bm9DYXN0cm8iLCJncm91cHMiOlsiQWRtaW4iXSwiZXhwIjoxNzU3NDc3OTIxLCJpYXQiOjE2OTY5OTc5MjEsImp0aSI6IjNhZWIyZjJkLTA0OWYtNGE2OC1iYWEzLTMxZjkwM2E0YTA1ZiJ9.BJOn0lOYsoaCCZyNYkba8hDJ3-Je3H6X-RQT0EnH_cnNAu_Y0yPKrfMUj49CgDc2pMI9OnVrkJvjbaPKxGD2O5PlOjf9-VOAW4YdAdtSL-LjwKbtEDf83F9j-BW_-y898kQpmjpzCGNQtDQCHYVfT5VOZBvgmYSnF0kMJzIEm_7uirUlQCc6ekumSeNwdS4we019582ZZ2KBOc1ZDIXL-aC-3HvqbolrNjh0d0CaLG8w61kSBxOfUSHtyBtdADDQvhCK9vt_mI8ccigyv77yLtgdgM_mhQucwJFgVh4LNDDHjJWG6q7s10yEtRYbDoo2VauSxo60rpQoI1lHgpzjKQ', // Adicione o token aqui
     'Content-Type': 'application/json',
   };
   final response = await http.get(Uri.parse('http://localhost:8080/produto'),
@@ -63,8 +63,6 @@ void main() async {
     produtos.forEach((produto) {
       print("ID: ${produto.id}");
       print("Nome: ${produto.nome}");
-      print("Valor de Venda: ${produto.valorVenda}");
-      print("Estoque: ${produto.estoque}");
       print("\n");
     });
   } catch (e) {

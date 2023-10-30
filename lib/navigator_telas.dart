@@ -20,7 +20,7 @@ void mudarTelaAdm(int x, BuildContext context) {
   }
   if (x == 4) {
     _currentBnb = 0;
-    Navigator.of(context).pushNamed('/pedidos');
+    Navigator.of(context).pushNamed('/login');
   }
   if (x == 5) {
     _currentBnb = 0;

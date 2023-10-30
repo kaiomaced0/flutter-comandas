@@ -1,41 +1,69 @@
-import 'dart:convert';
-
-import 'package:comanda_full/data/model/produto.dart';
 import 'package:comanda_full/widget/bs_add_produto.dart';
-import 'package:comanda_full/widget/card_produto.dart';
-import 'package:flutter/material.dart';
 import 'package:comanda_full/widget/bnb_adm.dart';
-import 'package:http/http.dart' as http;
+import 'package:comanda_full/data/model/produto.dart';
+import 'package:flutter/material.dart';
 
 class AdmProdutoPage extends StatefulWidget {
-  const AdmProdutoPage({super.key});
-
   @override
-  State<AdmProdutoPage> createState() => AdmProdutoPageState();
+  _AdmProdutoPageState createState() => _AdmProdutoPageState();
 }
 
-class AdmProdutoPageState extends State<AdmProdutoPage> {
-  Produto p = new Produto(id: 1, nome: 'objeto', valorVenda: 50, estoque: 10);
+class _AdmProdutoPageState extends State<AdmProdutoPage> {
+  late Future<List<Produto>> produtos;
+
+  @override
+  void initState() {
+    super.initState();
+    produtos = Produto.fetchProdutos();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Produtos'),
-        actions: [],
-      ),
       bottomNavigationBar: bnbAdm(context, null),
+      appBar: AppBar(
+        title: Text('Produtos'),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           bsProduto(context);
         },
         child: const Icon(Icons.add),
       ),
-      body: SingleChildScrollView(
-          child: Center(
-              child: Column(children: [
-        cardProduto(context, p),
-        cardProduto(context, p)
-      ]))),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            FutureBuilder<List<Produto>>(
+              future: produtos,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  print('carregando...');
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  print('erro conexao');
+                  return Center(child: Text('Erro: ${snapshot.error}'));
+                } else {
+                  print('fetch ok! ');
+                  final produtosList = snapshot.data!;
+
+                  return ListView.builder(
+                    itemCount: produtosList.length,
+                    itemBuilder: (context, index) {
+                      final produto = produtosList[index];
+                      return ListTile(
+                        title: Text(produto.nome),
+                        subtitle: Text(
+                            'ID: ${produto.id} - Valor: ${produto.valorVenda.toStringAsFixed(2)} - Estoque: ${produto.estoque}'),
+                      );
+                    },
+                  );
+                }
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

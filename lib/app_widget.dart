@@ -2,6 +2,7 @@ import 'package:comanda_full/pages/caixas/adm_caixa_page.dart';
 import 'package:comanda_full/pages/comandas/adm_comandas_detail_page.dart';
 import 'package:comanda_full/pages/comandas/adm_comandas_page.dart';
 import 'package:comanda_full/pages/funcionarios/adm_funcionarios_page.dart';
+import 'package:comanda_full/pages/login/login_page.dart';
 import 'package:comanda_full/pages/pagamentos/adm_pagamentos_page.dart';
 import 'package:comanda_full/pages/pedidos/adm_pedidos_page.dart';
 import 'package:comanda_full/pages/produtos/adm_produtos_page.dart';
@@ -23,7 +24,7 @@ class AppWidget extends StatelessWidget {
       darkTheme: darkTheme,
       routes: {
         '/': (context) => const AdmHomePage(),
-        '/produtos': (context) => const AdmProdutoPage(),
+        '/produtos': (context) => AdmProdutoPage(),
         '/relatorios': (context) => const AdmRelatorioPage(),
         '/caixa': (context) => const AdmCaixaPage(),
         '/comandas': (context) => const AdmComandasPage(),
@@ -32,6 +33,7 @@ class AppWidget extends StatelessWidget {
         '/pagamentos': (context) => const AdmPagamentosPage(),
         '/pedidos': (context) => const AdmPedidosPage(),
         '/tiposproduto': (context) => const AdmTiposProdutoPage(),
+        '/login': (context) => const LoginPage()
       },
     );
   }
