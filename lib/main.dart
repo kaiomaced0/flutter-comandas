@@ -4,3 +4,5 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const AppWidget());
 }
+
+late String url = 'http://localhost:8080';

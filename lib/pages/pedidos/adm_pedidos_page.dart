@@ -1,4 +1,4 @@
-import 'package:comanda_full/widget/bs_add_pedido.dart';
+import 'package:comanda_full/widget/add_pedido.dart';
 import 'package:comanda_full/widget/button_filter_pedidos.dart';
 import 'package:comanda_full/widget/card_pedidos.dart';
 import 'package:flutter/material.dart';
@@ -22,17 +22,15 @@ class AdmPedidosPageState extends State<AdmPedidosPage> {
       bottomNavigationBar: bnbAdm(context, 0),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            showDragHandle: true,
-            isScrollControlled: true,
-            builder: (BuildContext context) {
-              return FractionallySizedBox(
-                  heightFactor: 0.9,
-                  child: SingleChildScrollView(child: bsPedido(context, null)));
-            },
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => AddPedido(
+                comanda: null,
+                pedido: null,
+              ),
+            ),
           );
-          },
+        },
         child: const Icon(Icons.add),
       ),
       body: Center(

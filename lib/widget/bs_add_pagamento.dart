@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 
 Future bsPagamento(BuildContext context) {
+  String? selectedPaymentMethod;
+
+  final List<String> paymentMethods = [
+    'PIX',
+    'Cartão Débito',
+    'Cartão Crédito',
+    'Dinheiro'
+  ];
   return showModalBottomSheet(
     context: context,
     showDragHandle: true,
     isScrollControlled: true,
     builder: (BuildContext context) {
       return FractionallySizedBox(
-          heightFactor: 0.7,
+          heightFactor: 0.9,
           child: SingleChildScrollView(
               child: SizedBox(
             width: double.infinity,
@@ -56,7 +64,7 @@ Future bsPagamento(BuildContext context) {
                       ),
                     ),
                     const Padding(
-                      padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                      padding: EdgeInsets.fromLTRB(20, 5, 20, 10),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,23 +78,33 @@ Future bsPagamento(BuildContext context) {
                         ],
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Forma de Pagamento: ',
+                          const Text('Forma de Pagamento: ',
                               textAlign: TextAlign.start, maxLines: 1),
-                          TextField(
-                            autofocus: true,
-                            decoration: InputDecoration(hintMaxLines: 1),
-                          ),
+                          DropdownButtonFormField<String>(
+                            value: selectedPaymentMethod,
+                            hint: Text('Selecione o método de pagamento'),
+                            onChanged: (String? newValue) {},
+                            items: paymentMethods
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                alignment: AlignmentDirectional.center,
+                                value: value,
+                                child: Text(value),
+                                onTap: () {},
+                              );
+                            }).toList(),
+                          )
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 40, 20, 5),
+                      padding: const EdgeInsets.fromLTRB(20, 20, 20, 5),
                       child: MouseRegion(
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(

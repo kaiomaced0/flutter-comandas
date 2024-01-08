@@ -4,5 +4,6 @@
         "titleBar.activeBackground": "#0D493B",
         "titleBar.activeForeground": "#F0FCFA"
     },
-    "cmake.sourceDirectory": "C:/Users/kaiom/Documents/home/fluttering/comanda_full/linux"
+    "cmake.sourceDirectory": "C:/Users/kaiom/Documents/home/fluttering/comanda_full/linux",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

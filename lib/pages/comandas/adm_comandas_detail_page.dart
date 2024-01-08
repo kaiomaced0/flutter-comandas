@@ -1,10 +1,12 @@
+import 'package:comanda_full/data/model/comanda.dart';
+import 'package:comanda_full/pages/comandas/widgets/card_pedido.dart';
 import 'package:comanda_full/widget/bs_add_pagamento.dart';
-import 'package:comanda_full/widget/bs_add_pedido.dart';
-import 'package:comanda_full/widget/card_pedidos.dart';
+import 'package:comanda_full/widget/add_pedido.dart';
 import 'package:flutter/material.dart';
 
 class AdmComandasDetailPage extends StatefulWidget {
-  const AdmComandasDetailPage({super.key});
+  late Comanda? comanda;
+  AdmComandasDetailPage({super.key, required this.comanda});
 
   @override
   State<AdmComandasDetailPage> createState() => AdmComandasDetailPageState();
@@ -19,19 +21,7 @@ class AdmComandasDetailPageState extends State<AdmComandasDetailPage> {
         actions: const [],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-              context: context,
-              showDragHandle: true,
-              isScrollControlled: true,
-              builder: (BuildContext context) {
-                return FractionallySizedBox(
-                  heightFactor: 0.9,
-                  child: SingleChildScrollView(
-                      child: bsPedido(context, 'Comanda Atual')),
-                );
-              });
-        },
+        onPressed: () {},
         child: const Icon(Icons.add),
       ),
       body: Center(
@@ -40,8 +30,8 @@ class AdmComandasDetailPageState extends State<AdmComandasDetailPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              cardPedidos(context),
-              cardPedidos(context),
+              cardPedido(context),
+              cardPedido(context),
               MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(

@@ -1,16 +1,12 @@
+import 'package:comanda_full/data/model/pedido.dart';
+import 'package:comanda_full/data/model/produto.dart';
 import 'package:flutter/material.dart';
 
 Widget itemCompraPedido() {
-  const String nome = 'aa';
-  const int quantidade = 5;
-  return const Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Text(
-        '$quantidade x  $nome ',
-        maxLines: 1,
-        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-      ),
-    ],
+  return ListView.builder(
+    itemBuilder: (context, index) {
+      Text('nome produto  x  quantidade');
+    },
+    itemCount: 3,
   );
 }

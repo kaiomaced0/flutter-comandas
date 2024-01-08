@@ -20,12 +20,12 @@ BottomNavigationBar bnbAdm(context, int? current) {
         Navigator.pop(context);
       }
       if (value == 0) {
-        if (rotaAtual == '/') {
-          Navigator.of(context).pushReplacementNamed('/');
+        if (rotaAtual == '/home') {
+          Navigator.of(context).pushReplacementNamed('/home');
           _currentBnb = 0;
         } else {
           _currentBnb = 0;
-          Navigator.of(context).pushReplacementNamed('/');
+          Navigator.of(context).pushReplacementNamed('/home');
         }
       }
       if (value == 1) {

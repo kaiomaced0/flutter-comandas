@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:comanda_full/data/repository/usuario_logado_repository.dart';
+import 'package:comanda_full/pages/home/adm_home_page.dart';
 import 'package:comanda_full/widget/bnb_adm.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -161,13 +162,11 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           onTap: () {
-                            isLoading = true;
-                            Future.delayed(Duration(seconds: 2), () {
-                              setState(() {
-                                isLoading = false;
-                              });
-                            });
-                            // postData(login.toString(), senha.toString());
+                            Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (context) => AdmHomePage()),
+                              (Route<dynamic> route) => false,
+                            );
                           },
                         ),
                       ),

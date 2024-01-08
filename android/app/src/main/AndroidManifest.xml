@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.comanda_full">
    <application
+   
         android:label="comanda_full"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
