@@ -1,6 +1,18 @@
+import 'package:comanda_full/data/model/usuario.dart';
 import 'package:flutter/material.dart';
 
-Future bsFuncionario(BuildContext context) {
+Future bsFuncionario(BuildContext context, Usuario? u) {
+  TextEditingController nome = TextEditingController();
+  TextEditingController login = TextEditingController();
+  TextEditingController cpf = TextEditingController();
+  TextEditingController tipoacesso = TextEditingController();
+  TextEditingController senha = TextEditingController();
+  if (u != null) {
+    nome = TextEditingController(text: u.nome);
+    login = TextEditingController(text: u.login);
+    cpf = TextEditingController(text: u.cpf);
+    tipoacesso = TextEditingController(text: u.perfil.toString());
+  }
   return showModalBottomSheet(
       showDragHandle: true,
       isScrollControlled: true,
@@ -17,7 +29,7 @@ Future bsFuncionario(BuildContext context) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.fromLTRB(20, 5, 20, 0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -26,12 +38,13 @@ Future bsFuncionario(BuildContext context) {
                           Text('Nome do Funcionario: ',
                               textAlign: TextAlign.start, maxLines: 1),
                           TextField(
+                              controller: nome,
                               autofocus: true,
                               decoration: InputDecoration(hintMaxLines: 1)),
                         ],
                       ),
                     ),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -48,6 +61,7 @@ Future bsFuncionario(BuildContext context) {
                                   textAlign: TextAlign.start,
                                 ),
                                 TextField(
+                                  controller: login,
                                   autofocus: true,
                                   decoration: InputDecoration(hintMaxLines: 1),
                                 ),
@@ -65,6 +79,7 @@ Future bsFuncionario(BuildContext context) {
                               children: [
                                 Text('Senha: '),
                                 TextField(
+                                  controller: senha,
                                   autofocus: true,
                                   decoration: InputDecoration(hintMaxLines: 1),
                                 ),
@@ -74,7 +89,7 @@ Future bsFuncionario(BuildContext context) {
                         ),
                       ],
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.fromLTRB(20, 1, 20, 1),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -82,13 +97,14 @@ Future bsFuncionario(BuildContext context) {
                         children: [
                           Text('CPF: ', textAlign: TextAlign.start),
                           TextField(
+                            controller: cpf,
                             autofocus: true,
                             decoration: InputDecoration(hintMaxLines: 1),
                           ),
                         ],
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.fromLTRB(20, 1, 20, 5),
                       child: SizedBox(
                         width: 150,
@@ -98,6 +114,7 @@ Future bsFuncionario(BuildContext context) {
                           children: [
                             Text('Tipo de Acesso: '),
                             TextField(
+                              controller: tipoacesso,
                               autofocus: false,
                               decoration: InputDecoration(hintMaxLines: 1),
                             ),
@@ -148,6 +165,7 @@ Future bsFuncionario(BuildContext context) {
                           ),
                         ),
                         onTap: () {
+                          
                           Navigator.of(context).pop();
                         },
                       ),

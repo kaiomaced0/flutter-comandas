@@ -1,9 +1,12 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:comanda_full/data/model/usuario.dart';
 import 'package:comanda_full/widget/bs_add_funcionarios.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'package:flutter/material.dart';
 
-Widget cardFuncionario(BuildContext context) {
+Widget cardFuncionario(BuildContext context, Usuario u) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(4, 3, 4, 1),
     child: Slidable(
@@ -14,7 +17,7 @@ Widget cardFuncionario(BuildContext context) {
             label: 'Editar',
             padding: EdgeInsets.zero,
             onPressed: (context) {
-              bsFuncionario(context);
+              bsFuncionario(context, u);
             },
             icon: Icons.edit,
             backgroundColor: Theme.of(context).primaryColor,
@@ -31,18 +34,18 @@ Widget cardFuncionario(BuildContext context) {
       child: Container(
         color: const Color.fromARGB(255, 255, 216, 216),
         width: double.infinity,
-        height: 63,
-        child: const Padding(
+        height: 80,
+        child: Padding(
           padding: EdgeInsets.fromLTRB(0, 2, 4, 1),
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
                   padding: EdgeInsets.fromLTRB(10, 0, 2, 8),
                   child: Text(
-                    'Nome Funcionario',
+                    u.nome,
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -52,9 +55,7 @@ Widget cardFuncionario(BuildContext context) {
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Text(
-                      style: TextStyle(fontSize: 12),
-                      maxLines: 2,
-                      'Login do usuario'),
+                      style: TextStyle(fontSize: 12), maxLines: 2, u.login),
                 )
               ],
             ),
@@ -65,12 +66,12 @@ Widget cardFuncionario(BuildContext context) {
                   child: Chip(
                       autofocus: true,
                       label: Text(
-                        'Tipo Acesso',
+                        u.perfil.toString(),
                         style: TextStyle(color: Colors.black, fontSize: 12),
                       )),
                 ),
                 Text(
-                  'CPF: 000000000-00',
+                  u.cpf,
                   style: TextStyle(fontSize: 12),
                 ),
               ],

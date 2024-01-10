@@ -3,19 +3,22 @@ import 'package:comanda_full/main.dart';
 import 'package:http/http.dart' as http;
 
 class Usuario {
+  final int id;
   final String nome;
   final String login;
   final String cpf;
   final int perfil;
 
   Usuario(
-      {required this.nome,
+      {required this.id,
+      required this.nome,
       required this.login,
       required this.cpf,
       required this.perfil});
 
   factory Usuario.fromMap(Map<String, dynamic> map) {
     return Usuario(
+        id: map['id'],
         nome: map['nome'],
         login: map['login'],
         cpf: map['cpf'],

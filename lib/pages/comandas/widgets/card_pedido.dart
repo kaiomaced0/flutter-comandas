@@ -47,7 +47,7 @@ Widget cardPedido(BuildContext context) {
                 ],
               ),
               child: const Padding(
-                padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
+                padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
