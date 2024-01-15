@@ -3,11 +3,11 @@ import 'package:comanda_full/main.dart';
 import 'package:http/http.dart' as http;
 
 class Pedido {
-  final List<int> itemCompra;
-  final String observacao;
-  final int status;
-  final double valor;
-  final int quantidadePessoas;
+  late List<int> itemCompra;
+  late String observacao;
+  late int status;
+  late double valor;
+  late int quantidadePessoas;
   late int idComanda;
 
   Pedido(

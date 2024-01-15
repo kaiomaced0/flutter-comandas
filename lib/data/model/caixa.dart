@@ -4,11 +4,11 @@ import 'package:comanda_full/main.dart';
 import 'package:http/http.dart' as http;
 
 class Caixa {
-  final String nome;
-  final List<Long> comandas;
-  final List<Long> pagamentos;
-  final double valorTotal;
-  final DateTime dataCaixa;
+  late String nome;
+  late List<Long> comandas;
+  late List<Long> pagamentos;
+  late double valorTotal;
+  late DateTime dataCaixa;
 
   Caixa(
       {required this.nome,
