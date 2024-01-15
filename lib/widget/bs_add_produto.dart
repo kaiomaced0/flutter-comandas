@@ -1,6 +1,21 @@
+import 'package:comanda_full/data/model/produto.dart';
 import 'package:flutter/material.dart';
 
-Future bsProduto(BuildContext context) {
+Future bsProduto(BuildContext context, Produto? p) {
+  TextEditingController nome = TextEditingController();
+  TextEditingController descricao = TextEditingController();
+  TextEditingController custo = TextEditingController();
+  TextEditingController valor = TextEditingController();
+  TextEditingController tipoproduto = TextEditingController();
+  TextEditingController estoque = TextEditingController();
+  if (p != null) {
+    nome = TextEditingController(text: p.nome);
+    descricao = TextEditingController(text: p.descricao);
+    custo = TextEditingController(text: p.custo.toString());
+    valor = TextEditingController(text: p.valor.toString());
+    tipoproduto = TextEditingController(text: p.tipoProduto);
+    estoque = TextEditingController(text: p.estoque.toString());
+  }
   return showModalBottomSheet(
       showDragHandle: true,
       isScrollControlled: true,
@@ -16,53 +31,60 @@ Future bsProduto(BuildContext context) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Nome do Produto: ', textAlign: TextAlign.start),
-                          TextField(
-                              autofocus: true,
-                              decoration: InputDecoration(hintMaxLines: 1)),
-                        ],
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Descrição do Produto: ',
+                          const Text('Nome do Produto: ',
                               textAlign: TextAlign.start),
                           TextField(
-                              maxLines: null,
+                              controller: nome,
                               autofocus: true,
-                              decoration: InputDecoration(hintMaxLines: 1)),
+                              decoration:
+                                  const InputDecoration(hintMaxLines: 1)),
                         ],
                       ),
                     ),
-                    const Row(
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text('Descrição do Produto: ',
+                              textAlign: TextAlign.start),
+                          TextField(
+                              controller: descricao,
+                              maxLines: null,
+                              autofocus: true,
+                              decoration:
+                                  const InputDecoration(hintMaxLines: 1)),
+                        ],
+                      ),
+                    ),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           flex: 5,
                           child: Padding(
-                            padding: EdgeInsets.fromLTRB(0, 5, 5, 5),
+                            padding: const EdgeInsets.fromLTRB(0, 5, 5, 5),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   'Preço Custo: ',
                                   textAlign: TextAlign.start,
                                 ),
                                 TextField(
+                                  controller: custo,
                                   autofocus: true,
-                                  decoration: InputDecoration(hintMaxLines: 1),
+                                  decoration:
+                                      const InputDecoration(hintMaxLines: 1),
                                 ),
                               ],
                             ),
@@ -71,17 +93,19 @@ Future bsProduto(BuildContext context) {
                         Expanded(
                           flex: 5,
                           child: Padding(
-                            padding: EdgeInsets.fromLTRB(5, 5, 0, 5),
+                            padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
                             child: SizedBox(
                               width: 150,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Preço Venda: '),
+                                  const Text('Preço Venda: '),
                                   TextField(
+                                    controller: valor,
                                     autofocus: true,
-                                    decoration: InputDecoration(hintMaxLines: 1),
+                                    decoration:
+                                        const InputDecoration(hintMaxLines: 1),
                                   ),
                                 ],
                               ),
@@ -90,32 +114,36 @@ Future bsProduto(BuildContext context) {
                         ),
                       ],
                     ),
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(20, 1, 20, 1),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 1, 20, 1),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Tipo Produto: ', textAlign: TextAlign.start),
+                          const Text('Tipo Produto: ',
+                              textAlign: TextAlign.start),
                           TextField(
+                            controller: tipoproduto,
                             autofocus: true,
-                            decoration: InputDecoration(hintMaxLines: 1),
+                            decoration: const InputDecoration(hintMaxLines: 1),
                           ),
                         ],
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(20, 1, 20, 5),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 1, 20, 5),
                       child: SizedBox(
                         width: 100,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Estoque: '),
+                            const Text('Estoque: '),
                             TextField(
+                              controller: estoque,
                               autofocus: false,
-                              decoration: InputDecoration(hintMaxLines: 1),
+                              decoration:
+                                  const InputDecoration(hintMaxLines: 1),
                             ),
                           ],
                         ),
@@ -164,6 +192,7 @@ Future bsProduto(BuildContext context) {
                           ),
                         ),
                         onTap: () {
+                          
                           Navigator.of(context).pop();
                         },
                       ),

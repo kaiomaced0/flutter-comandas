@@ -1,3 +1,4 @@
+import 'package:comanda_full/data/model/tipoproduto.dart';
 import 'package:comanda_full/pages/caixas/adm_caixa_page.dart';
 import 'package:comanda_full/pages/comandas/adm_comandas_detail_page.dart';
 import 'package:comanda_full/pages/comandas/adm_comandas_page.dart';
@@ -38,7 +39,8 @@ class AppWidget extends StatelessWidget {
         '/pagamentos': (context) => const AdmPagamentosPage(),
         '/pedidos': (context) => const AdmPedidosPage(),
         '/pedidos/add': (context) => AddPedido(comanda: null, pedido: null),
-        '/tiposproduto': (context) => const AdmTiposProdutoPage(),
+        '/tiposproduto': (context) =>
+            AdmTiposProdutoPage(tipoProdutos: TipoProduto.fetchTipoProdutos()),
         '/login': (context) => const LoginPage()
       },
     );

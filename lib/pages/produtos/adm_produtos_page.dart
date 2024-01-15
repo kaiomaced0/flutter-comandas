@@ -26,7 +26,7 @@ class _AdmProdutoPageState extends State<AdmProdutoPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          bsProduto(context);
+          bsProduto(context, null);
         },
         child: const Icon(Icons.add),
       ),
@@ -54,7 +54,7 @@ class _AdmProdutoPageState extends State<AdmProdutoPage> {
                       return ListTile(
                         title: Text(produto.nome),
                         subtitle: Text(
-                            'ID: ${produto.id} - Valor: ${produto.valorVenda.toStringAsFixed(2)} - Estoque: ${produto.estoque}'),
+                            'ID: ${produto.id} - Valor: ${produto.valor.toStringAsFixed(2)} - Estoque: ${produto.estoque}'),
                       );
                     },
                   );

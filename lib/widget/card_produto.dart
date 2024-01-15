@@ -16,7 +16,7 @@ Padding cardProduto(BuildContext context, final Produto produto) {
             label: 'Editar',
             padding: EdgeInsets.zero,
             onPressed: (context) {
-              bsProduto(context);
+              bsProduto(context, produto);
             },
             icon: Icons.edit,
             backgroundColor: Theme.of(context).primaryColor,
