@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:comanda_full/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Produto {
   late int id;
@@ -8,8 +9,9 @@ class Produto {
   late String descricao;
   late double? custo;
   late double valor;
-  late String? tipoProduto;
+  late int tipoProduto;
   late int estoque;
+  late String linkimage;
 
   Produto(
       {required this.id,
@@ -17,25 +19,29 @@ class Produto {
       required this.descricao,
       this.custo,
       required this.valor,
-      this.tipoProduto,
-      required this.estoque});
+      required this.tipoProduto,
+      required this.estoque,
+      required this.linkimage});
 
   factory Produto.fromMap(Map<String, dynamic> map) {
     return Produto(
         id: map['id'],
-        nome: map['nome'],
-        descricao: map['descricao'],
-        valor: map['valorVenda'] * 1.0,
-        estoque: map['estoque']);
+        nome: map['nome'] ?? '',
+        descricao: map['descricao'] ?? '',
+        tipoProduto: map['tipoProduto'] ?? 1,
+        valor: map['valor'] * 1.0,
+        estoque: map['estoque'] ?? null,
+        linkimage: map['linkimage'] ?? '');
   }
 // }
 
   static Future<List<Produto>> fetchProdutos() async {
+    SharedPreferences _sharedpreferences =
+        await SharedPreferences.getInstance();
     print('entrou na funcao fetch ');
 
     final response = await http.get(Uri.parse('${url}/produto'), headers: {
-      'Authorization':
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJrYWlvcHJvamVjdHMtand0Iiwic3ViIjoiQnJ1bm9DYXN0cm8iLCJncm91cHMiOlsiQWRtaW4iXSwiZXhwIjoxNzU3NTM5Mzk4LCJpYXQiOjE2OTcwNTkzOTgsImp0aSI6ImM0YmFkYWY1LTEwOGEtNGQ2MS1iOGQ5LTNhZmU0ZDdkNGRkOSJ9.pCsZcgHtV9mJVTShNVSCOQZ0A_JeoG8F4q3wEGad1KVVLd7W9f4FbWT2d9MP4_1_7TRO-44m3VR-eheNYnscoDl5u4Z6GnrDM49uL8g5YjyhbYRmhkf3j8C0OfsAdE6mZof1mvbmHWGjZ5kgknoR1SjG18Y9Qp0haSR9gAkNS--IdKwyNWYJuPZAN53u1ooP8HdBT9hikd61FCwIM8ColAauNql7KN9hVj-tjjZjHokBCLcxt4tx_-pGAtwwGyu6Ik9J5mLxiYQe9HRYu7AZ86sfPF38maYfXPFJAyUxWydbqQ5BuHnTTxtVn9IgoPqsIUaMM1ZhHXvsdNTCGtBbHA'
+      'Authorization': 'Bearer ${_sharedpreferences.getString('token')}'
     });
     if (response.statusCode == 200) {
       print('response ok');
@@ -46,4 +52,6 @@ class Produto {
       throw Exception('Falha ao carregar os produtos');
     }
   }
+
+  
 }

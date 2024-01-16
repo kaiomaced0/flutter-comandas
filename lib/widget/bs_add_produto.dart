@@ -13,7 +13,7 @@ Future bsProduto(BuildContext context, Produto? p) {
     descricao = TextEditingController(text: p.descricao);
     custo = TextEditingController(text: p.custo.toString());
     valor = TextEditingController(text: p.valor.toString());
-    tipoproduto = TextEditingController(text: p.tipoProduto);
+    tipoproduto = TextEditingController(text: p.tipoProduto.toString());
     estoque = TextEditingController(text: p.estoque.toString());
   }
   return showModalBottomSheet(
@@ -22,7 +22,7 @@ Future bsProduto(BuildContext context, Produto? p) {
       context: context,
       builder: (BuildContext context) {
         return FractionallySizedBox(
-          heightFactor: 0.9,
+          heightFactor: 1,
           child: SingleChildScrollView(
               child: SizedBox(
             child: Center(
@@ -40,6 +40,7 @@ Future bsProduto(BuildContext context, Produto? p) {
                           const Text('Nome do Produto: ',
                               textAlign: TextAlign.start),
                           TextField(
+                              onTap: () {},
                               controller: nome,
                               autofocus: true,
                               decoration:
@@ -56,6 +57,7 @@ Future bsProduto(BuildContext context, Produto? p) {
                           const Text('Descrição do Produto: ',
                               textAlign: TextAlign.start),
                           TextField(
+                              onTap: () {},
                               controller: descricao,
                               maxLines: null,
                               autofocus: true,
@@ -81,6 +83,7 @@ Future bsProduto(BuildContext context, Produto? p) {
                                   textAlign: TextAlign.start,
                                 ),
                                 TextField(
+                                  onTap: () {},
                                   controller: custo,
                                   autofocus: true,
                                   decoration:
@@ -102,6 +105,7 @@ Future bsProduto(BuildContext context, Produto? p) {
                                 children: [
                                   const Text('Preço Venda: '),
                                   TextField(
+                                    onTap: () {},
                                     controller: valor,
                                     autofocus: true,
                                     decoration:
@@ -123,6 +127,7 @@ Future bsProduto(BuildContext context, Produto? p) {
                           const Text('Tipo Produto: ',
                               textAlign: TextAlign.start),
                           TextField(
+                            onTap: () {},
                             controller: tipoproduto,
                             autofocus: true,
                             decoration: const InputDecoration(hintMaxLines: 1),
@@ -140,6 +145,7 @@ Future bsProduto(BuildContext context, Produto? p) {
                           children: [
                             const Text('Estoque: '),
                             TextField(
+                              onTap: () {},
                               controller: estoque,
                               autofocus: false,
                               decoration:
@@ -192,7 +198,6 @@ Future bsProduto(BuildContext context, Produto? p) {
                           ),
                         ),
                         onTap: () {
-                          
                           Navigator.of(context).pop();
                         },
                       ),
