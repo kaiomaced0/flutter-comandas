@@ -22,7 +22,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       title: 'App Widget',
       theme: lightTheme,
       darkTheme: darkTheme,
@@ -39,8 +39,7 @@ class AppWidget extends StatelessWidget {
         '/pagamentos': (context) => const AdmPagamentosPage(),
         '/pedidos': (context) => const AdmPedidosPage(),
         '/pedidos/add': (context) => AddPedido(comanda: null, pedido: null),
-        '/tiposproduto': (context) =>
-            AdmTiposProdutoPage(tipoProdutos: TipoProduto.fetchTipoProdutos()),
+        '/tiposproduto': (context) => AdmTiposProdutoPage(),
         '/login': (context) => const LoginPage()
       },
     );
@@ -54,7 +53,7 @@ Future<Widget>? tokenSalvo() async {
   if (token.isEmpty) {
     return const LoginPage();
   } else {
-    return const LoginPage();
+    return const AdmHomePage();
   }
 }
 
@@ -80,7 +79,6 @@ Widget _introScreen(BuildContext context) {
         duration: const Duration(seconds: 2),
         nextScreen: FutureBuilder(
             future: tokenSalvo(),
-            // tokenSalvo(),
             builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const CircularProgressIndicator();
