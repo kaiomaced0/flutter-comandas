@@ -1,7 +1,10 @@
+import 'package:comanda_full/pages/login/login_page.dart';
 import 'package:comanda_full/widget/card_inicio_home_adm.dart';
 import 'package:comanda_full/widget/container_card_home.dart';
 import 'package:flutter/material.dart';
 import 'package:comanda_full/widget/bnb_adm.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vibration/vibration.dart';
 
 class AdmHomePage extends StatefulWidget {
   const AdmHomePage({super.key});
@@ -16,7 +19,26 @@ class _AdmHomePageState extends State<AdmHomePage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Comandas Full'),
-          actions: const [],
+          forceMaterialTransparency: true,
+          actions: <Widget>[
+            PopupMenuButton<String>(
+              onSelected: (String result) {
+                if (result == 'logout') {
+                  _logout(context);
+                }
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                const PopupMenuItem<String>(
+                  value: 'logout',
+                  child: ListTile(
+                    leading: Icon(Icons.exit_to_app),
+                    title: Text('Logout'),
+                  ),
+                ),
+              ],
+            ),
+          ],
+          automaticallyImplyLeading: false,
         ),
         bottomNavigationBar: bnbAdm(context, null),
         body: SingleChildScrollView(
@@ -119,4 +141,14 @@ class _AdmHomePageState extends State<AdmHomePage> {
           ),
         ));
   }
+}
+
+void _logout(BuildContext context) async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.remove('token');
+  Vibration.vibrate(duration: 100);
+  Navigator.of(context).pushAndRemoveUntil(
+    MaterialPageRoute(builder: (context) => const LoginPage()),
+    (Route<dynamic> route) => false,
+  );
 }
