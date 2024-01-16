@@ -8,7 +8,7 @@ Widget cardTiposProduto(BuildContext context, TipoProduto tipoProduto) {
   return Container(
     height: 90,
     child: Padding(
-      padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+      padding: const EdgeInsets.fromLTRB(4, 5, 4, 5),
       child: Slidable(
         endActionPane: ActionPane(
           motion: const StretchMotion(),
@@ -21,7 +21,7 @@ Widget cardTiposProduto(BuildContext context, TipoProduto tipoProduto) {
                 bsTiposProduto(context);
               },
               icon: Icons.edit,
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Theme.of(context).colorScheme.surfaceTint,
             ),
             SlidableAction(
               label: 'Inativar',
@@ -29,7 +29,7 @@ Widget cardTiposProduto(BuildContext context, TipoProduto tipoProduto) {
               borderRadius: BorderRadius.circular(10),
               onPressed: (context) {},
               icon: Icons.block,
-              backgroundColor: Colors.red.shade900,
+              backgroundColor: Theme.of(context).colorScheme.error,
             )
           ],
         ),
@@ -37,7 +37,7 @@ Widget cardTiposProduto(BuildContext context, TipoProduto tipoProduto) {
           cursor: SystemMouseCursors.click,
           child: Container(
             width: double.infinity,
-            height: 60,
+            height: 80,
             decoration: ShapeDecoration(
               color: Colors.orange,
               shape: RoundedRectangleBorder(

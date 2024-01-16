@@ -1,6 +1,8 @@
+import 'package:comanda_full/data/model/tipoproduto.dart';
 import 'package:flutter/material.dart';
 
 Future bsTiposProduto(BuildContext context) {
+  TextEditingController nome = TextEditingController();
   return showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -18,17 +20,19 @@ Future bsTiposProduto(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(20, 5, 20, 40),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 5, 20, 40),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Nome do Tipo de Produto: ',
+                          const Text('Nome do Tipo de Produto: ',
                               textAlign: TextAlign.start, maxLines: 1),
                           TextField(
+                            onTap: () {},
+                            controller: nome,
                             autofocus: true,
-                            decoration: InputDecoration(hintMaxLines: 1),
+                            decoration: const InputDecoration(hintMaxLines: 1),
                           ),
                         ],
                       ),
@@ -76,7 +80,11 @@ Future bsTiposProduto(BuildContext context) {
                           ),
                         ),
                         onTap: () {
+                          TipoProduto.inserirTipoProduto(
+                              TipoProduto(nome: nome.text, cor: '0xFFFFFFFF'));
                           Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pushNamed('/tiposproduto');
                         },
                       ),
                     )
