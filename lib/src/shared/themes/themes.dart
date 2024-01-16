@@ -10,9 +10,9 @@ ThemeData get lightTheme => ThemeData(
     ),
     colorScheme: _lightColorScheme,
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: Color(0xFF00914B),
+        backgroundColor: const Color(0xFF00914B),
         foregroundColor: _lightColorScheme.background,
-        extendedTextStyle: TextStyle(fontSize: 25)));
+        extendedTextStyle: const TextStyle(fontSize: 25)));
 
 ThemeData get darkTheme => ThemeData(
     useMaterial3: true,
@@ -21,6 +21,6 @@ ThemeData get darkTheme => ThemeData(
       centerTitle: true,
       backgroundColor: _darkColorScheme.primaryContainer,
     ),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: Color.fromARGB(255, 0, 93, 48),
         extendedTextStyle: TextStyle(fontSize: 25)));

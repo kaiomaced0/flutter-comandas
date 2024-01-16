@@ -9,7 +9,7 @@ Widget cardHome(BuildContext context, String? title) {
         width: 148,
         height: 96,
         decoration: ShapeDecoration(
-          color: const Color(0xFFF0E5F3),
+          color: Theme.of(context).colorScheme.inversePrimary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -28,8 +28,9 @@ Widget cardHome(BuildContext context, String? title) {
             Flexible(
               child: Text(
                 '$title',
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.black),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.onBackground),
                 maxLines: 2,
               ),
             ),

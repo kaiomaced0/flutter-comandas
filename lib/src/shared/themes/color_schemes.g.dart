@@ -2,7 +2,7 @@ part of 'themes.dart';
 
 const _lightColorScheme = ColorScheme(
   brightness: Brightness.light,
-  primary: Color(0xFF6750A4),
+  primary: Color.fromARGB(255, 57, 50, 77),
   onPrimary: Color(0xFFFFFFFF),
   primaryContainer: Color(0xFFE9DDFF),
   onPrimaryContainer: Color(0xFF22005D),
@@ -53,7 +53,7 @@ const _darkColorScheme = ColorScheme(
   onError: Color(0xFF690005),
   onErrorContainer: Color(0xFFFFDAD6),
   background: Color(0xFF1C1B1E),
-  onBackground: Color(0xFFE6E1E6),
+  onBackground: Colors.white,
   surface: Color(0xFF1C1B1E),
   onSurface: Color(0xFFE6E1E6),
   surfaceVariant: Color(0xFF49454E),
