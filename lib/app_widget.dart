@@ -1,4 +1,5 @@
 import 'package:comanda_full/data/model/tipoproduto.dart';
+import 'package:comanda_full/data/model/usuario.dart';
 import 'package:comanda_full/pages/caixas/adm_caixa_page.dart';
 import 'package:comanda_full/pages/comandas/adm_comandas_detail_page.dart';
 import 'package:comanda_full/pages/comandas/adm_comandas_page.dart';

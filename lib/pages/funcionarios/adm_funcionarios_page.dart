@@ -30,8 +30,10 @@ class AdmFuncionariosPageState extends State<AdmFuncionariosPage> {
       body: SingleChildScrollView(
           child: Center(
               child: Column(children: [
-        cardFuncionario(context,
-            Usuario(id: 5, nome: 'nome', login: 'login', cpf: 'cpf', perfil: 2))
+        cardFuncionario(
+            context,
+            Usuario(
+                id: 5, nome: 'nome', login: 'login', cpf: 'cpf', perfil: [2]))
       ]))),
     );
   }
