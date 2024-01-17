@@ -1,11 +1,13 @@
 import 'package:comanda_full/data/model/tipoproduto.dart';
-import 'package:comanda_full/widget/bs_tiposproduto.dart';
+import 'package:comanda_full/pages/tiposproduto/widgets/tiposproduto_chanche.dart';
+import 'package:comanda_full/src/shared/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 Widget cardTiposProduto(BuildContext context, TipoProduto tipoProduto) {
-  tipoProduto.cor = '0xff123456';
-  return Container(
+  Color color = hexToColor(tipoProduto.cor!);
+
+  return SizedBox(
     height: 90,
     child: Padding(
       padding: const EdgeInsets.fromLTRB(4, 5, 4, 5),
@@ -18,7 +20,9 @@ Widget cardTiposProduto(BuildContext context, TipoProduto tipoProduto) {
               padding: EdgeInsets.zero,
               borderRadius: BorderRadius.circular(10),
               onPressed: (context) {
-                bsTiposProduto(context);
+                TiposProdutoChange(
+                  tipoProduto: tipoProduto,
+                );
               },
               icon: Icons.edit,
               backgroundColor: Theme.of(context).colorScheme.surfaceTint,
@@ -39,7 +43,7 @@ Widget cardTiposProduto(BuildContext context, TipoProduto tipoProduto) {
             width: double.infinity,
             height: 80,
             decoration: ShapeDecoration(
-              color: Colors.orange,
+              color: color,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -57,7 +61,16 @@ Widget cardTiposProduto(BuildContext context, TipoProduto tipoProduto) {
               children: [
                 Text(
                   tipoProduto.nome,
-                  style: const TextStyle(fontSize: 20),
+                  style: const TextStyle(
+                      shadows: [
+                        Shadow(
+                            offset: Offset(1.0, 1.0),
+                            blurRadius: 10.0,
+                            color: Colors.black)
+                      ],
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
                   maxLines: 2,
                 ),
               ],
@@ -67,12 +80,4 @@ Widget cardTiposProduto(BuildContext context, TipoProduto tipoProduto) {
       ),
     ),
   );
-}
-
-Color hexToColor(String hexString) {
-  hexString = hexString.toUpperCase().replaceAll("#", "");
-  if (hexString.length == 6) {
-    hexString = "FF" + hexString;
-  }
-  return Color(int.parse(hexString, radix: 16));
 }
