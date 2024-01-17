@@ -67,3 +67,11 @@ const _darkColorScheme = ColorScheme(
   outlineVariant: Color(0xFF49454E),
   scrim: Color(0xFF000000),
 );
+
+String colorToHexa(Color color) {
+  return '#${color.red.toRadixString(16).padLeft(2, '0')}${color.green.toRadixString(16).padLeft(2, '0')}${color.blue.toRadixString(16).padLeft(2, '0')}${color.alpha.toRadixString(16).padLeft(2, '0')}';
+}
+
+Color hexToColor(String hexColor) {
+  return Color(int.parse(hexColor.substring(1, 7), radix: 16) + 0xFF000000);
+}
