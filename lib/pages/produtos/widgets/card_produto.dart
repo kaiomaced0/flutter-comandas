@@ -1,6 +1,6 @@
 import 'package:comanda_full/data/model/produto.dart';
-import 'package:comanda_full/widget/bs_add_produto.dart';
-import 'package:comanda_full/widget/bs_add_produto_estoque.dart';
+import 'package:comanda_full/pages/produtos/widgets/produto_change.dart';
+import 'package:comanda_full/pages/produtos/widgets/bs_change_produto_estoque.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -16,7 +16,15 @@ Padding cardProduto(BuildContext context, final Produto produto) {
                 label: 'Editar',
                 padding: EdgeInsets.zero,
                 onPressed: (context) {
-                  bsProduto(context, produto);
+                  showModalBottomSheet(
+                      showDragHandle: true,
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (BuildContext context) {
+                        return FractionallySizedBox(
+                            heightFactor: 0.95,
+                            child: ProdutoChange(produto: produto));
+                      });
                 },
                 icon: Icons.edit,
                 backgroundColor: Theme.of(context).colorScheme.surfaceTint),
@@ -29,7 +37,16 @@ Padding cardProduto(BuildContext context, final Produto produto) {
             ),
             SlidableAction(
               onPressed: (context) {
-                bsProdutoEstoque(context);
+                showModalBottomSheet(
+                    showDragHandle: true,
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (BuildContext context) {
+                      return FractionallySizedBox(
+                          heightFactor: 0.7,
+                          child: ProdutoEstoqueChange(
+                              id: produto.id!, estoque: produto.estoque));
+                    });
               },
               label: 'Estoque',
               padding: EdgeInsets.zero,

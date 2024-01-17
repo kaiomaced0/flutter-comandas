@@ -1,9 +1,10 @@
-import 'package:comanda_full/widget/bs_add_produto.dart';
+import 'package:comanda_full/pages/produtos/widgets/produto_change.dart';
 import 'package:comanda_full/widget/bnb_adm.dart';
 import 'package:comanda_full/data/model/produto.dart';
 import 'package:comanda_full/pages/produtos/widgets/card_produto.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AdmProdutoPage extends StatefulWidget {
   @override
@@ -21,12 +22,20 @@ class _AdmProdutoPageState extends State<AdmProdutoPage> {
 
   @override
   Widget build(BuildContext context) {
+    setState(() {});
     return Scaffold(
       bottomNavigationBar: bnbAdm(context, null),
       appBar: AppBar(title: Text('Produtos')),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          bsProduto(context, null);
+          showModalBottomSheet(
+              showDragHandle: true,
+              isScrollControlled: true,
+              context: context,
+              builder: (BuildContext context) {
+                return FractionallySizedBox(
+                    heightFactor: 0.95, child: ProdutoChange());
+              });
         },
         child: const Icon(Icons.add),
       ),

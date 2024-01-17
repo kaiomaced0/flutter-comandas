@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, use_build_context_synchronously
 
+import 'package:comanda_full/data/model/usuario.dart';
 import 'package:comanda_full/main.dart';
 import 'package:comanda_full/pages/home/adm_home_page.dart';
 import 'package:flutter/material.dart';
@@ -42,11 +43,15 @@ class _LoginPageState extends State<LoginPage> {
       print(token);
 
       await _sharedpreferences.setString('token', token.toString());
+      Usuario u = Usuario.obterDadosUsuario() as Usuario;
+
+      await _sharedpreferences.setString('perfil', u.perfil[1].toString());
 
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         backgroundColor: Color.fromARGB(255, 14, 104, 17),
         duration: Duration(seconds: 1),
-        content: Text('Login Realizado com Sucesso!'),
+        content: Text('Login Realizado com Sucesso!',
+            style: TextStyle(color: Colors.white)),
       ));
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => const AdmHomePage()),
@@ -56,7 +61,8 @@ class _LoginPageState extends State<LoginPage> {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         backgroundColor: Color.fromARGB(255, 104, 14, 14),
         duration: Duration(milliseconds: 900),
-        content: Text('Login ou senha incorreto!'),
+        content: Text('Login ou senha incorreto!',
+            style: TextStyle(color: Colors.white)),
       ));
 
       print('Erro na solicitação POST');

@@ -1,6 +1,6 @@
 import 'package:comanda_full/data/model/tipoproduto.dart';
-import 'package:comanda_full/widget/bs_tiposproduto.dart';
-import 'package:comanda_full/widget/card_tiposproduto.dart';
+import 'package:comanda_full/pages/tiposproduto/widgets/tiposproduto_chanche.dart';
+import 'package:comanda_full/pages/tiposproduto/widgets/card_tiposproduto.dart';
 import 'package:flutter/material.dart';
 import 'package:comanda_full/widget/bnb_adm.dart';
 
@@ -24,12 +24,19 @@ class AdmTiposProdutoPageState extends State<AdmTiposProdutoPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tipos de Produto'),
-        actions: [],
       ),
       bottomNavigationBar: bnbAdm(context, 0),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          bsTiposProduto(context);
+          showModalBottomSheet(
+              showDragHandle: true,
+              isScrollControlled: true,
+              context: context,
+              builder: (BuildContext context) {
+                return FractionallySizedBox(
+                    heightFactor: 0.85, child: TiposProdutoChange());
+              });
+          ;
         },
         child: const Icon(Icons.add),
       ),
