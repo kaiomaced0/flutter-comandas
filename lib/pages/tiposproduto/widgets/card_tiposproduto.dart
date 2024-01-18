@@ -20,9 +20,17 @@ Widget cardTiposProduto(BuildContext context, TipoProduto tipoProduto) {
               padding: EdgeInsets.zero,
               borderRadius: BorderRadius.circular(10),
               onPressed: (context) {
-                TiposProdutoChange(
-                  tipoProduto: tipoProduto,
-                );
+                showModalBottomSheet(
+                    showDragHandle: true,
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (BuildContext context) {
+                      return FractionallySizedBox(
+                          heightFactor: 0.85,
+                          child: TiposProdutoChange(
+                            tipoProduto: tipoProduto,
+                          ));
+                    });
               },
               icon: Icons.edit,
               backgroundColor: Theme.of(context).colorScheme.surfaceTint,

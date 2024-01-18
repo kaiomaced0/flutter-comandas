@@ -13,6 +13,16 @@ class TiposProdutoChange extends StatefulWidget {
 
 class _TiposProdutoChangeState extends State<TiposProdutoChange> {
   Color corEscolhida = const Color.fromARGB(255, 32, 141, 88);
+  TextEditingController nome = TextEditingController();
+
+  @override
+  void initState() {
+    if (widget.tipoProduto != null) {
+      corEscolhida = hexToColor(widget.tipoProduto!.cor!);
+      nome = TextEditingController(text: widget.tipoProduto!.nome);
+    }
+    super.initState();
+  }
 
   void changeColor(Color color) {
     setState(() {
@@ -46,7 +56,6 @@ class _TiposProdutoChangeState extends State<TiposProdutoChange> {
     );
   }
 
-  TextEditingController nome = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +84,7 @@ class _TiposProdutoChangeState extends State<TiposProdutoChange> {
                         controller: nome,
                         autofocus: true,
                         decoration: const InputDecoration(hintMaxLines: 1),
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -162,22 +171,47 @@ class _TiposProdutoChangeState extends State<TiposProdutoChange> {
                       ),
                     ),
                     onTap: () {
-                      nome.text.isEmpty
-                          ? ScaffoldMessenger.of(context)
-                              .showSnackBar(const SnackBar(
-                              backgroundColor: Color.fromARGB(255, 104, 14, 14),
-                              duration: Duration(milliseconds: 900),
-                              content: Text('Informe o nome do Tipo de Produto',
-                                  style: TextStyle(color: Colors.white)),
-                            ))
-                          : {
-                              TipoProduto.inserirTipoProduto(TipoProduto(
+                      if (widget.tipoProduto == null) {
+                        nome.text.isEmpty
+                            ? ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                                backgroundColor:
+                                    Color.fromARGB(255, 104, 14, 14),
+                                duration: Duration(milliseconds: 900),
+                                content: Text(
+                                    'Informe o nome do Tipo de Produto',
+                                    style: TextStyle(color: Colors.white)),
+                              ))
+                            : {
+                                TipoProduto.inserirTipoProduto(TipoProduto(
                                   nome: nome.text,
-                                  cor: colorToHexa(corEscolhida))),
-                              Navigator.of(context).pop(),
-                              Navigator.of(context).pop(),
-                              Navigator.of(context).pushNamed('/tiposproduto')
-                            };
+                                  cor: colorToHexa(corEscolhida),
+                                )),
+                                Navigator.of(context).pop(),
+                                Navigator.of(context).pop(),
+                                Navigator.of(context).pushNamed('/tiposproduto')
+                              };
+                      } else {
+                        nome.text.isEmpty
+                            ? ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                                backgroundColor:
+                                    Color.fromARGB(255, 104, 14, 14),
+                                duration: Duration(milliseconds: 900),
+                                content: Text(
+                                    'Informe o nome do Tipo de Produto',
+                                    style: TextStyle(color: Colors.white)),
+                              ))
+                            : {
+                                TipoProduto.inserirTipoProduto(TipoProduto(
+                                    nome: nome.text,
+                                    cor: colorToHexa(corEscolhida),
+                                    id: widget.tipoProduto!.id)),
+                                Navigator.of(context).pop(),
+                                Navigator.of(context).pop(),
+                                Navigator.of(context).pushNamed('/tiposproduto')
+                              };
+                      }
                     },
                   ),
                 )

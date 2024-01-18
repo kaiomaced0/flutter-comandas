@@ -29,6 +29,7 @@ class Produto {
         nome: map['nome'] ?? '',
         descricao: map['descricao'] ?? '',
         tipoProduto: map['tipoProduto'] ?? 1,
+        custo: map['custo'] * 1.0,
         valor: map['valor'] * 1.0,
         estoque: map['estoque'] ?? null,
         linkimage: map['linkimage'] ?? '');

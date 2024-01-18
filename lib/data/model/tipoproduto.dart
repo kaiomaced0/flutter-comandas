@@ -33,27 +33,58 @@ class TipoProduto {
   }
 
   static Future<void> inserirTipoProduto(TipoProduto t) async {
+    print('id ${t.id ?? 0}, nome ${t.nome ?? 'vazio'}, cor ${t.cor} ');
+    if (t == null) {
+      print('TipoProduto é null');
+      throw Exception('Falha ao inserir tipoProduto, TipoProduto Null');
+    }
     SharedPreferences _sharedpreferences =
         await SharedPreferences.getInstance();
-    final Uri uri = Uri.parse('$url/tipoproduto');
-    final response = await http.post(
-      uri,
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization': 'Bearer ${_sharedpreferences.getString('token')}'
-      },
-      body: jsonEncode(<String, String>{
-        'nome': t.nome,
-        'cor': t.cor!,
-      }),
-    );
 
-    if (response.statusCode == 200) {
-      // Se a chamada para o servidor foi bem-sucedida, analise a resposta.
-      print('Produto inserido com sucesso: ${response.body}');
+    if (t.id == null) {
+      final Uri uri = Uri.parse('$url/tipoproduto');
+      print(uri.toString());
+      final response = await http.post(
+        uri,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': 'Bearer ${_sharedpreferences.getString('token')}'
+        },
+        body: jsonEncode(<String, String>{
+          'nome': t.nome,
+          'cor': t.cor!,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        // Se a chamada para o servidor foi bem-sucedida, analise a resposta.
+        print('Produto inserido com sucesso: ${response.body}');
+      } else {
+        // Se a chamada não foi bem-sucedida, lance um erro.
+        throw Exception('Falha ao inserir produto');
+      }
     } else {
-      // Se a chamada não foi bem-sucedida, lance um erro.
-      throw Exception('Falha ao inserir produto');
+      final Uri uri = Uri.parse('$url/tipoproduto/update/${t.id}');
+      print(uri.toString());
+      final response = await http.put(
+        uri,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': 'Bearer ${_sharedpreferences.getString('token')}'
+        },
+        body: jsonEncode(<String, String>{
+          'nome': t.nome,
+          'cor': t.cor!,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        // Se a chamada para o servidor foi bem-sucedida, analise a resposta.
+        print('Produto inserido com sucesso: ${response.body}');
+      } else {
+        // Se a chamada não foi bem-sucedida, lance um erro.
+        throw Exception('Falha ao inserir produto');
+      }
     }
   }
 }

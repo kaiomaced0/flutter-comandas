@@ -7,7 +7,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 Padding cardProduto(BuildContext context, final Produto produto) {
   return Padding(
-    padding: const EdgeInsets.all(0),
+    padding: const EdgeInsets.fromLTRB(0, 0, 0, 2),
     child: Slidable(
         endActionPane: ActionPane(
           motion: const StretchMotion(),
@@ -56,7 +56,8 @@ Padding cardProduto(BuildContext context, final Produto produto) {
           ],
         ),
         child: Container(
-          height: 120,
+          color: Theme.of(context).colorScheme.outlineVariant,
+          height: 110,
           child: Row(
             children: [
               Flexible(

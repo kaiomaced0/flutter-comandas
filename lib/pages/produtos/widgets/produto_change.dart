@@ -192,7 +192,7 @@ class _ProdutoChangeState extends State<ProdutoChange> {
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
                   child: Padding(
-                    padding: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.fromLTRB(10, 40, 10, 10),
                     child: Center(
                       child: SizedBox(
                         width: 250,
