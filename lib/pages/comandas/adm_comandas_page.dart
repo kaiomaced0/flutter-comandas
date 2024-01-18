@@ -27,7 +27,7 @@ class AdmComandasPageState extends State<AdmComandasPage> {
               isScrollControlled: true,
               builder: (BuildContext context) {
                 return FractionallySizedBox(
-                    heightFactor: 0.63,
+                    heightFactor: 0.9,
                     child: SingleChildScrollView(child: bsComanda(context)));
               });
         },
