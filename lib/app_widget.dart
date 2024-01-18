@@ -35,8 +35,7 @@ class AppWidget extends StatelessWidget {
         '/caixa': (context) => const AdmCaixaPage(),
         '/comandas': (context) => const AdmComandasPage(),
         '/comandas/detail': (context) => AdmComandasDetailPage(comanda: null),
-        '/funcionarios': (context) =>
-            const AdmFuncionariosPage(funcionarios: []),
+        '/funcionarios': (context) => const AdmFuncionariosPage(),
         '/pagamentos': (context) => const AdmPagamentosPage(),
         '/pedidos': (context) => const AdmPedidosPage(),
         '/pedidos/add': (context) => AddPedido(comanda: null, pedido: null),
