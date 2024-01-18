@@ -1,18 +1,25 @@
 import 'package:comanda_full/data/model/usuario.dart';
-import 'package:comanda_full/widget/bs_add_funcionarios.dart';
-import 'package:comanda_full/widget/card_funcionarios.dart';
+import 'package:comanda_full/pages/funcionarios/widgets/funcionario_change.dart';
+import 'package:comanda_full/pages/funcionarios/widgets/card_funcionarios.dart';
 import 'package:flutter/material.dart';
 import 'package:comanda_full/widget/bnb_adm.dart';
 
 class AdmFuncionariosPage extends StatefulWidget {
-  final List<Usuario> funcionarios;
-  const AdmFuncionariosPage({super.key, required this.funcionarios});
+  const AdmFuncionariosPage({super.key});
 
   @override
   State<AdmFuncionariosPage> createState() => AdmFuncionariosPageState();
 }
 
 class AdmFuncionariosPageState extends State<AdmFuncionariosPage> {
+  late Future<List<Usuario>> funcionarios;
+
+  @override
+  void initState() {
+    super.initState();
+    funcionarios = Usuario.fetchUsuarios();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,17 +30,55 @@ class AdmFuncionariosPageState extends State<AdmFuncionariosPage> {
       bottomNavigationBar: bnbAdm(context, 0),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          bsFuncionario(context, null);
+          showModalBottomSheet(
+              showDragHandle: true,
+              isScrollControlled: true,
+              context: context,
+              builder: (BuildContext context) {
+                return FractionallySizedBox(
+                    heightFactor: 0.8, child: FuncionarioChange());
+              });
         },
         child: const Icon(Icons.add),
       ),
       body: SingleChildScrollView(
           child: Center(
               child: Column(children: [
-        cardFuncionario(
-            context,
-            Usuario(
-                id: 5, nome: 'nome', login: 'login', cpf: 'cpf', perfil: [2]))
+        FutureBuilder<List<Usuario>>(
+          future: funcionarios,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              print('carregando...');
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              print('erro conexao');
+              return Center(child: Text('Erro: ${snapshot.error}'));
+            } else {
+              print('fetch ok! ');
+              final funcionariosList = snapshot.data!;
+
+              return Scrollbar(
+                interactive: true,
+                thickness: 10,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: funcionariosList.length,
+                  itemBuilder: (context, index) {
+                    final funcionario = funcionariosList[index];
+                    return cardFuncionario(
+                        context,
+                        Usuario(
+                            id: funcionario.id,
+                            nome: funcionario.nome,
+                            login: funcionario.login,
+                            cpf: funcionario.cpf,
+                            perfil: funcionario.perfil));
+                  },
+                ),
+              );
+            }
+          },
+        )
       ]))),
     );
   }
