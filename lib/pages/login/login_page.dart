@@ -43,9 +43,9 @@ class _LoginPageState extends State<LoginPage> {
       print(token);
 
       await _sharedpreferences.setString('token', token.toString());
-      Usuario u = Usuario.obterDadosUsuario() as Usuario;
+      Usuario u = await Usuario.obterDadosUsuario();
 
-      await _sharedpreferences.setString('perfil', u.perfil[1].toString());
+      await _sharedpreferences.setString('perfil', u.perfil![0].toString());
 
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         backgroundColor: Color.fromARGB(255, 14, 104, 17),
