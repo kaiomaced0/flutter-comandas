@@ -2,35 +2,38 @@ import 'dart:convert';
 import 'dart:ffi';
 import 'package:comanda_full/main.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Caixa {
   late String nome;
-  late List<Long> comandas;
-  late List<Long> pagamentos;
-  late double valorTotal;
-  late DateTime dataCaixa;
+  late String? comentario;
+  late double? valorTotal;
+  late bool? fechado;
 
   Caixa(
       {required this.nome,
-      required this.comandas,
-      required this.pagamentos,
+      this.comentario,
       required this.valorTotal,
-      required this.dataCaixa});
+      this.fechado});
 
   factory Caixa.fromMap(Map<String, dynamic> map) {
     return Caixa(
         nome: map['nome'],
-        comandas: map['comandas'],
-        pagamentos: map['pagamentos'],
+        comentario: map['comentario'],
         valorTotal: map['valorTotal'] * 1.0,
-        dataCaixa: map['dataCaixa']);
+        fechado: map['fechado'] ?? false);
   }
 
   static Future<List<Caixa>> fetchCaixas() async {
-    final response = await http.get(Uri.parse('${url}/caixa'), headers: {
-      'Authorization':
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJrYWlvcHJvamVjdHMtand0Iiwic3ViIjoiQnJ1bm9DYXN0cm8iLCJncm91cHMiOlsiQWRtaW4iXSwiZXhwIjoxNzU3NDc3OTIxLCJpYXQiOjE2OTY5OTc5MjEsImp0aSI6IjNhZWIyZjJkLTA0OWYtNGE2OC1iYWEzLTMxZjkwM2E0YTA1ZiJ9.BJOn0lOYsoaCCZyNYkba8hDJ3-Je3H6X-RQT0EnH_cnNAu_Y0yPKrfMUj49CgDc2pMI9OnVrkJvjbaPKxGD2O5PlOjf9-VOAW4YdAdtSL-LjwKbtEDf83F9j-BW_-y898kQpmjpzCGNQtDQCHYVfT5VOZBvgmYSnF0kMJzIEm_7uirUlQCc6ekumSeNwdS4we019582ZZ2KBOc1ZDIXL-aC-3HvqbolrNjh0d0CaLG8w61kSBxOfUSHtyBtdADDQvhCK9vt_mI8ccigyv77yLtgdgM_mhQucwJFgVh4LNDDHjJWG6q7s10yEtRYbDoo2VauSxo60rpQoI1lHgpzjKQ'
-    });
+    SharedPreferences _sharedpreferences =
+        await SharedPreferences.getInstance();
+    final response = await http.get(
+      Uri.parse('${url}/caixa'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer ${_sharedpreferences.getString('token')}'
+      },
+    );
     if (response.statusCode == 200) {
       print('response ok');
       final List<dynamic> jsonData = json.decode(response.body);
@@ -38,6 +41,52 @@ class Caixa {
     } else {
       print('falha ao carregar os Caixas');
       throw Exception('Falha ao carregar os Caixas');
+    }
+  }
+
+  static Future<Caixa> atual() async {
+    SharedPreferences _sharedpreferences =
+        await SharedPreferences.getInstance();
+    final response = await http.get(
+      Uri.parse('${url}/caixa/atual'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer ${_sharedpreferences.getString('token')}'
+      },
+    );
+    if (response.statusCode == 200) {
+      print('response ok');
+      return Caixa.fromMap(json.decode(response.body));
+    } else {
+      print('falha ao carregar os Caixas');
+      throw Exception('Falha ao carregar os Caixas');
+    }
+  }
+
+  static Future<void> insertCaixa(Caixa c) async {
+    if (c == null) {
+      print('Caixa é null');
+      throw Exception('Falha ao inserir Caixa, Caixa Null');
+    }
+    SharedPreferences _sharedpreferences =
+        await SharedPreferences.getInstance();
+
+    final Uri uri = Uri.parse('$url/caixa');
+    print(uri.toString());
+    final response = await http.post(
+      uri,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer ${_sharedpreferences.getString('token')}'
+      },
+      body: jsonEncode(
+          <String, String>{'nome': c.nome, 'comentario': c.comentario ?? ''}),
+    );
+
+    if (response.statusCode == 200) {
+      print('Caixa inserido com sucesso: ${response.body}');
+    } else {
+      throw Exception('Falha ao inserir Caixa');
     }
   }
 }
