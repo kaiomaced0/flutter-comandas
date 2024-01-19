@@ -19,6 +19,14 @@ class AdmTiposProdutoPageState extends State<AdmTiposProdutoPage> {
     super.initState();
   }
 
+  Future<void> _atualizarDados() async {
+    await Future.delayed(Duration(milliseconds: 500));
+
+    setState(() {
+      tipoProdutos = TipoProduto.fetchTipoProdutos();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,33 +49,36 @@ class AdmTiposProdutoPageState extends State<AdmTiposProdutoPage> {
         child: const Icon(Icons.add),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height * 0.8,
-          child: FutureBuilder<List<TipoProduto>>(
-              future: tipoProdutos,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  print('carregando...');
-                  return const Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  print('erro conexao');
-                  return Center(child: Text('Erro: ${snapshot.error}'));
-                } else {
-                  print('fetch ok! ');
-                  final tipolist = snapshot.data!;
+        child: RefreshIndicator(
+          onRefresh: _atualizarDados,
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.8,
+            child: FutureBuilder<List<TipoProduto>>(
+                future: tipoProdutos,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    print('carregando...');
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    print('erro conexao');
+                    return Center(child: Text('Erro: ${snapshot.error}'));
+                  } else {
+                    print('fetch ok! ');
+                    final tipolist = snapshot.data!;
 
-                  return Scrollbar(
-                    interactive: true,
-                    thickness: 10,
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return cardTiposProduto(context, tipolist[index]);
-                        },
-                        itemCount: tipolist.length),
-                  );
-                }
-              }),
+                    return Scrollbar(
+                      interactive: true,
+                      thickness: 10,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return cardTiposProduto(context, tipolist[index]);
+                          },
+                          itemCount: tipolist.length),
+                    );
+                  }
+                }),
+          ),
         ),
       ),
     );

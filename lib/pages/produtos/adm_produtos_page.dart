@@ -20,6 +20,14 @@ class _AdmProdutoPageState extends State<AdmProdutoPage> {
     produtos = Produto.fetchProdutos();
   }
 
+  Future<void> _atualizarDados() async {
+    await Future.delayed(Duration(milliseconds: 500));
+
+    setState(() {
+      produtos = Produto.fetchProdutos();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     setState(() {});
@@ -42,35 +50,38 @@ class _AdmProdutoPageState extends State<AdmProdutoPage> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(2.0),
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.8,
-            child: FutureBuilder<List<Produto>>(
-              future: produtos,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  print('carregando...');
-                  return const Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  print('erro conexao');
-                  return Center(child: Text('Erro: ${snapshot.error}'));
-                } else {
-                  print('fetch ok! ');
-                  final produtosList = snapshot.data!;
+          child: RefreshIndicator(
+            onRefresh: _atualizarDados,
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: FutureBuilder<List<Produto>>(
+                future: produtos,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    print('carregando...');
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    print('erro conexao');
+                    return Center(child: Text('Erro: ${snapshot.error}'));
+                  } else {
+                    print('fetch ok! ');
+                    final produtosList = snapshot.data!;
 
-                  return Scrollbar(
-                    interactive: true,
-                    thickness: 10,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: produtosList.length,
-                      itemBuilder: (context, index) {
-                        final produto = produtosList[index];
-                        return cardProduto(context, produto);
-                      },
-                    ),
-                  );
-                }
-              },
+                    return Scrollbar(
+                      interactive: true,
+                      thickness: 10,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: produtosList.length,
+                        itemBuilder: (context, index) {
+                          final produto = produtosList[index];
+                          return cardProduto(context, produto);
+                        },
+                      ),
+                    );
+                  }
+                },
+              ),
             ),
           ),
         ),
