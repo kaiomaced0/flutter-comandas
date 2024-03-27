@@ -1,10 +1,11 @@
 import 'dart:convert';
+import 'package:comanda_full/data/model/pedido.dart';
 import 'package:comanda_full/main.dart';
 import 'package:http/http.dart' as http;
 
 class Comanda {
   final int id;
-  final List<int> pedidos;
+  final List<Pedido> pedidos;
   final String nome;
   final double valor;
   final int pagamento;
@@ -23,7 +24,7 @@ class Comanda {
   factory Comanda.fromMap(Map<String, dynamic> map) {
     return Comanda(
         id: map['id'],
-        pedidos: List<int>.from((map['pedidos'] as List)),
+        pedidos: List<Pedido>.from((map['pedidos'] as List)),
         nome: map['nome'],
         valor: map['valor'],
         pagamento: map['pagamento'],

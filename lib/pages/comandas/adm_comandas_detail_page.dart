@@ -1,5 +1,5 @@
 import 'package:comanda_full/data/model/comanda.dart';
-import 'package:comanda_full/pages/comandas/widgets/card_pedido.dart';
+import 'package:comanda_full/widget/card_pedido.dart';
 import 'package:comanda_full/widget/bs_add_pagamento.dart';
 import 'package:comanda_full/widget/add_pedido.dart';
 import 'package:flutter/material.dart';
@@ -30,8 +30,12 @@ class AdmComandasDetailPageState extends State<AdmComandasDetailPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              cardPedido(context),
-              cardPedido(context),
+              ListView.builder(
+                itemCount: widget.comanda!.pedidos.length,
+                itemBuilder: (context, index) {
+                  return cardPedido(context, widget.comanda!.pedidos[index]);
+                },
+              ),
               MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(

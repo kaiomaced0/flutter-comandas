@@ -1,11 +1,12 @@
 import 'dart:convert';
+import 'package:comanda_full/data/model/itemcompra.dart';
 import 'package:comanda_full/main.dart';
 import 'package:http/http.dart' as http;
 
 class Pedido {
-  late List<int> itemCompra;
+  late List<ItemCompra> itemCompra;
   late String observacao;
-  late int status;
+  late String status;
   late double valor;
   late int quantidadePessoas;
   late int idComanda;
@@ -19,7 +20,7 @@ class Pedido {
 
   factory Pedido.fromMap(Map<String, dynamic> map) {
     return Pedido(
-        itemCompra: List<int>.from((map['itemCompra' as List])),
+        itemCompra: List<ItemCompra>.from((map['itemCompra' as List])),
         observacao: map['observacao'],
         status: map['status'],
         valor: map['valor'] * 1.0,

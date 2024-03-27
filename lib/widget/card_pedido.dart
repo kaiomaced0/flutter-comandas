@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:comanda_full/data/model/pedido.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-Widget cardPedido(BuildContext context) {
+Widget cardPedido(BuildContext context, Pedido? pedido) {
   return GestureDetector(
     child: Padding(
       padding: const EdgeInsets.fromLTRB(2, 3, 2, 3),
@@ -15,7 +18,6 @@ Widget cardPedido(BuildContext context) {
               borderRadius: BorderRadius.circular(10),
               label: "Pronto",
               onPressed: (context) {},
-              icon: Icons.edit,
               backgroundColor: Colors.blueGrey,
             ),
             SlidableAction(
@@ -23,7 +25,6 @@ Widget cardPedido(BuildContext context) {
               padding: EdgeInsets.zero,
               label: "Preparando",
               onPressed: (context) {},
-              icon: Icons.block,
               backgroundColor: Colors.red.shade900,
             )
           ],
@@ -46,7 +47,7 @@ Widget cardPedido(BuildContext context) {
                   )
                 ],
               ),
-              child: const Padding(
+              child: Padding(
                 padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,8 +60,8 @@ Widget cardPedido(BuildContext context) {
                           Chip(
                               backgroundColor: Colors.white,
                               label: Text(
+                                pedido!.status ?? '',
                                 maxLines: 1,
-                                'Aguardando',
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.bold),
                               )),
@@ -72,7 +73,7 @@ Widget cardPedido(BuildContext context) {
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               softWrap: true,
-                              'observacoes.............................ssss \n ssssssssssssssssssssssssssssss............a......................................'),
+                              pedido!.observacao ?? ''),
                         ],
                       ),
                     ),
@@ -83,28 +84,30 @@ Widget cardPedido(BuildContext context) {
                         children: [
                           Column(
                             children: [
-                              Text(
-                                '1x' ' Produto1',
-                                maxLines: 1,
-                                style: TextStyle(
-                                    fontSize: 10, color: Colors.black),
-                              ),
-                              Text(
-                                '1x' ' Produto1',
-                                maxLines: 1,
-                                style: TextStyle(
-                                    fontSize: 10, color: Colors.black),
-                              ),
-                              Text(
-                                '1x' + ' Produto1',
-                                maxLines: 1,
-                                style: TextStyle(
-                                    fontSize: 10, color: Colors.black),
+                              Expanded(
+                                flex: 3,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    ListView.builder(
+                                      itemCount: pedido!.itemCompra.length ?? 0,
+                                      itemBuilder: (context, index) {
+                                        return Text(
+                                          '${pedido.itemCompra[index].quantidade}x  ${pedido.itemCompra[index].produto.nome}',
+                                          maxLines: 1,
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              color: Colors.black),
+                                        );
+                                      },
+                                    )
+                                  ],
+                                ),
                               ),
                               Padding(
                                 padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
                                 child: Text(
-                                  'R\$ 40,00',
+                                  'R\$ ${pedido!.valor.toString() ?? '0,00'}',
                                   maxLines: 1,
                                   style: TextStyle(
                                       color: Colors.black,
